@@ -16,14 +16,14 @@ describe Translation::Infrastructure::Driver::DeepL do
     source = Model::SourceText.new([
                                      "Hello, Good Morning.",
                                      "My name is Jiro.",
-                                     "Who are you?"
                                    ])
 
     sut = client.translate source, from: SupportedLang::English, to: SupportedLang::Japanese
     expected = Model::TargetText.new(sections: [
       Model::TargetText::Section.new(source: "Hello, Good Morning.", target: "こんにちは、おはようございます。"),
       Model::TargetText::Section.new(source: "My name is Jiro.", target: "私の名前はJiroです。"),
-      Model::TargetText::Section.new(source: "Who are you?", target: "あなたは誰ですか？"),
     ])
+
+    expect(sut).to eq expected
   end
 end
