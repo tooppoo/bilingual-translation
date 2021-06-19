@@ -15,7 +15,7 @@ module Translation
 
           translated = @driver.translate(source, from: language_pair.source, to: language_pair.target)
 
-          @formatter.format(translated)
+          translated.format by: @formatter
         end
       end
     end

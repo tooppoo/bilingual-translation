@@ -2,6 +2,11 @@
 
 module Translation
   module Language
+    module Supported
+      English = "EN"
+      Japanese = "JA"
+    end
+
     class LanguagePair
       attr_reader :source, :target
 
