@@ -20,17 +20,17 @@ module Translation
           # @type [Hash[]] texts
           # @example
           # [
-          #   { text: 'Hello.' },
-          #   { text: 'I am John Doe.' },
-          #   { text: 'Who are you?' },
+          #   ["text", "Hello."],
+          #   ["text", "I am John Doe."],
+          #   ["text", "Who are you?"],
           # ]
-          texts = source.sentences.map { |s| { "text" => s.to_s } }
-          source_lang = { "source_lang" => from.to_s }
-          target_lang = { "target_lang" => to.to_s }
-          auth_key = { "auth_key" => @auth_key }
+          texts = source.sentences.map { |s| ["text", s.to_s] }
+          source_lang = ["source_lang", from.to_s]
+          target_lang = ["target_lang", to.to_s]
+          auth_key = ["auth_key", @auth_key]
 
           response = post("https://api-free.deepl.com/v2/translate", [
-            texts,
+            *texts,
             source_lang,
             target_lang,
             auth_key,
@@ -52,9 +52,14 @@ module Translation
           # 重複キーをパラメータに指定する必要があるので、別途エンコード
           req = Net::HTTP::Post.new(uri.path).tap do |r|
             r.body = URI.encode_www_form param
+            r.content_type = 'application/x-www-form-urlencoded'
           end
 
-          Net::HTTP.new(url.host, url.port).start do |http|
+          client = Net::HTTP.new(uri.host, uri.port).tap do |http|
+            http.use_ssl = true
+          end
+
+          client.start do |http|
             http.request(req)
           end
         end
