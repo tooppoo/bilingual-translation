@@ -38,10 +38,10 @@ module Translation
           body = response.body
           data = JSON.parse body, symbolize_names: true
 
-          sections = data.map.with_index do |target, i|
+          sections = data[:translations].map.with_index do |target, i|
             src = source.sentences[i]
 
-            ::Translation::Model::TargetText::Section.new(source: src, target: target)
+            ::Translation::Model::TargetText::Section.new(source: src, target: target[:text])
           end
 
           ::Translation::Model::TargetText.new(sections: sections)
