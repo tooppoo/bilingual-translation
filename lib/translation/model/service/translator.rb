@@ -4,9 +4,8 @@ module Translation
   module Model
     module Service
       class Translator
-        def initialize(driver:, formatter:)
+        def initialize(driver:)
           @driver = driver
-          @formatter = formatter
         end
 
         def run(input)
@@ -15,8 +14,10 @@ module Translation
 
           translated = @driver.translate(source, from: language_pair.source, to: language_pair.target)
 
-          translated.format by: @formatter
+          translated.format by: input.formatter
         end
+
+        Input = Struct.new(:source, :language_pair, :formatter, keyword_init: true)
       end
     end
   end

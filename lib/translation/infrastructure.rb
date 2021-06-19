@@ -8,4 +8,6 @@ module Translation
   end
 end
 
-require_relative './infrastructure/driver'
+%w[driver format].each do |path|
+  require_relative "./infrastructure//#{path}"
+end

@@ -14,6 +14,16 @@ module Translation
         @sections == other.sections
       end
 
+      def format(by:)
+        formatter = by
+
+        formatted_sections = @sections.map do |sec|
+          formatter.format source: sec.source, target: sec.target
+        end
+
+        formatted_sections.join "\n"
+      end
+
       class Section
         attr_reader :source, :target
 

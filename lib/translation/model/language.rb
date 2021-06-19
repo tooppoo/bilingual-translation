@@ -11,8 +11,8 @@ module Translation
       class LanguagePair
         attr_reader :source, :target
 
-        # @param [Symbol] source ソース言語
-        # @param [Symbol] target ターゲット言語
+        # @param source ソース言語
+        # @param target ターゲット言語
         def initialize(source:, target:)
           @source = source
           @target = target
