@@ -31,13 +31,12 @@ describe Logging::Loggable do
     def with_optional_keyword_params(a, b: 2)
       a + b
     end
-  end
 
-  let(:logger) do
-    double("logger").tap do |stub|
-      expect(stub).to receive("info").with(hash_with_keys(:parameters, :receiver, :return)).once
+    def raise_error
+      raise RuntimeError.new "test"
     end
   end
+
   let(:decorator) do
     Logging::Loggable.info(logger: logger)
   end
@@ -53,9 +52,27 @@ describe Logging::Loggable do
     { name: :with_optional_keyword_params, f: ->(obj) { obj.with_optional_keyword_params(1) } },
   ].each do |test_case|
     context test_case[:name] do
+      let(:logger) do
+        double("logger").tap do |stub|
+          expect(stub).to receive("info").with(hash_with_keys(:parameters, :receiver, :return)).once
+        end
+      end
+
       it "should use logger" do
         expect(test_case[:f].call(target)).to eq 3
       end
+    end
+  end
+
+  context "method raise error" do
+    let(:logger) do
+      double("logger").tap do |stub|
+        expect(stub).to receive("info").with(hash_with_keys(:parameters, :receiver, :raise)).once
+      end
+    end
+
+    it "should use logger" do
+      expect { target.raise_error }.to raise_error(RuntimeError, "test")
     end
   end
 end
