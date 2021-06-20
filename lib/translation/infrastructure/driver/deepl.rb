@@ -22,7 +22,7 @@ module Translation
         end
 
         def translate(source, from:, to:)
-          # @type [Hash[]] texts
+          # @type [String[]] texts
           # @example
           # [
           #   ["text", "Hello."],
@@ -39,6 +39,7 @@ module Translation
             source_lang,
             target_lang,
             auth_key,
+            ["split_sentences", 0],
           ])
           body = response.body
           data = JSON.parse body, symbolize_names: true
@@ -52,6 +53,8 @@ module Translation
           ::Translation::Model::TargetText.new(sections: sections)
         end
 
+        # @param [String] url
+        # @param [String[][]] param
         private def post(url, param)
           uri = URI.parse url
           # 重複キーをパラメータに指定する必要があるので、別途エンコード
