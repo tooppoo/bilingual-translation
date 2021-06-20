@@ -1,24 +1,23 @@
-# README
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# About
+A browser-based application for outputting translations in paragraph-by-paragraph bilingual format.
 
-Things you may want to cover:
+# Usage
+## initialize
+```shell
+make
+```
 
-* Ruby version
+## start
+```shell
+make local
+```
 
-* System dependencies
+## test
+```shell
+make test
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# License
+MIT License
