@@ -2,7 +2,7 @@ require 'rails_helper'
 
 require 'translation/model'
 
-module Translation::Factory::DriverFactory
+module Translation::Driver::DriverFactory
   def self.test
     TestDriver.new
   end

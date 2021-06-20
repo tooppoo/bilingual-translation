@@ -3,10 +3,10 @@ require 'translation/model'
 
 class Api::TranslationController < ApplicationController
   def translate
-    formatter = Translation::Factory::FormatFactory.use(
+    formatter = Translation::Format::FormatFactory.use(
       Rails.configuration.x.translation.format[:default]
     )
-    driver = Translation::Factory::DriverFactory.use(
+    driver = Translation::Driver::DriverFactory.use(
       Rails.configuration.x.translation.driver[:default]
     )
 

@@ -3,7 +3,7 @@
 require 'translation/infrastructure'
 
 module Translation
-  module Factory
+  module Format
     module FormatFactory
       class << self
 
