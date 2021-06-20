@@ -7,6 +7,11 @@ RSpec.describe "Api::Translations", type: :request do
       post "/api/translation"
       expect(response).to have_http_status(:success)
     end
+    it "returns json" do
+      post "/api/translation"
+
+      expect(response.content_type).to include "application/json"
+    end
   end
 
 end
