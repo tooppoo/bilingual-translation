@@ -11,7 +11,7 @@ describe Translation::Infrastructure::Driver::DeepL do
   xit "translate sample text" do
     auth_key = "REPLACE_BY_YOUR_AUTH_KEY_AT_RUNTIME_AND_MUST_NOT_COMMIT"
 
-    client = Translation::Infrastructure::Driver::DeepL.new(auth_key: auth_key)
+    client = Translation::Infrastructure::Driver::DeepL.free_plan(auth_key: auth_key)
 
     source = Model::SourceText.new([
                                      "Hello, Good Morning.",

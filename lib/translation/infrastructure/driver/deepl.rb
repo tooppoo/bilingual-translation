@@ -12,8 +12,13 @@ module Translation
         require 'uri'
         require 'json'
 
-        def initialize(auth_key:)
+        def self.free_plan(auth_key:)
+          new auth_key: auth_key, domain: "api-free.deepl.com"
+        end
+
+        def initialize(auth_key:, domain:)
           @auth_key = auth_key
+          @domain = domain
         end
 
         def translate(source, from:, to:)
@@ -29,7 +34,7 @@ module Translation
           target_lang = ["target_lang", to.to_s]
           auth_key = ["auth_key", @auth_key]
 
-          response = post("https://api-free.deepl.com/v2/translate", [
+          response = post("https://#{@domain}/v2/translate", [
             *texts,
             source_lang,
             target_lang,
