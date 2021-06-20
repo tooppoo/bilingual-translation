@@ -55,7 +55,7 @@ RSpec.describe "Api::Translations", type: :request do
 <details>
   <summary>原文</summary>
 
-text1
+> text1
 </details>
 
 文書2
@@ -63,7 +63,7 @@ text1
 <details>
   <summary>原文</summary>
 
-text2
+> text2
 </details>
 
 EOS
