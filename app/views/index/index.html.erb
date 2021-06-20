@@ -2,6 +2,7 @@
   <header class="h-1/6 flex flex-row items-center p-3">
     <button
       id="translate"
+      type="button"
       class="w-32 h-8 border-2"
     >
       翻訳
@@ -40,3 +41,34 @@
     </section>
   </article>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  const target = $("#target-text")
+  $("#translate").click(() => {
+      const source = $("#source-text").val()
+      const text = source.split(/\n{2,}/)
+      const csrfToken = $("[name=csrf-token]").attr('content')
+
+      const data = {
+          text,
+          language: {
+              from: 'en',
+              to: 'ja',
+          },
+          authenticity_token: csrfToken,
+      }
+
+      $.ajax({
+          url: '/api/translation',
+          type: 'POST',
+          dataType: 'json',
+          data,
+      }).done((res) => {
+          console.log({ res })
+
+          target.val(res.translated.body)
+      }).fail((request, status, error) => {
+          console.error({ request, status, error })
+      })
+  })
+</script>
