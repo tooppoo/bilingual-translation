@@ -1,11 +1,32 @@
 require 'rails_helper'
 
+require 'translation/model'
+
+module Translation::Factory::DriverFactory
+  def self.test
+    TestDriver.new
+  end
+
+  class TestDriver
+    def translate(source, from:, to:)
+      source_sentences = source.sentences
+
+      Translation::Model::TargetText.new(sections: [
+        Translation::Model::TargetText::Section.new(source: source_sentences[0], target: "文書1"),
+        Translation::Model::TargetText::Section.new(source: source_sentences[1], target: "文書2"),
+      ])
+    end
+  end
+end
+
 RSpec.describe "Api::Translations", type: :request do
+  Rails.configuration.x.translation.driver = { default: :test }
+
   describe "POST /translate" do
     context "request parameter valid" do
       let(:params) do
         {
-          text: ["hello", "my name is john"],
+          text: %w[text1 text2],
           language: {
             from: "en",
             to: "ja",
@@ -24,5 +45,4 @@ RSpec.describe "Api::Translations", type: :request do
       end
     end
   end
-
 end
