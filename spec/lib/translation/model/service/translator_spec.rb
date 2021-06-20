@@ -5,7 +5,7 @@ require "translation/model"
 describe Translation::Model::Service::Translator do
   Formatter = Struct.new("MockFormatter") do
     def format(source:, target:)
-      "#{source} -> #{target}"
+      "#{source} -> #{target}\n"
     end
   end
   let(:src_txt) { Translation::Model::SourceText.new(%w[text1 text2]) }
@@ -39,7 +39,7 @@ describe Translation::Model::Service::Translator do
       driver_mock
     end
 
-    it { is_expected.to eq "text1 -> 文書1\ntext2 -> 文書2" }
+    it { is_expected.to eq "text1 -> 文書1\ntext2 -> 文書2\n" }
   end
 
   context "language is not supported" do

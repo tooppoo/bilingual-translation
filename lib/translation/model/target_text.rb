@@ -21,7 +21,7 @@ module Translation
           formatter.format source: sec.source, target: sec.target
         end
 
-        formatted_sections.join "\n"
+        formatted_sections.join ""
       end
 
       class Section
