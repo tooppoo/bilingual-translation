@@ -32,6 +32,6 @@ module BilingualTranslation
       default: :markdown
     }
 
-    config.x.loggable.level = :info
+    config.x.loggable.level = :debug
   end
 end
