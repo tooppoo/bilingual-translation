@@ -5,7 +5,6 @@ require "translation/model"
 
 describe Translation::Infrastructure::Driver::DeepL do
   Model = Translation::Model
-  SupportedLang = Model::Language::Supported
 
   # ローカルでの動作確認用. 外部通信が発生するので、CIでは実行しない.
   xit "translate sample text" do
@@ -18,7 +17,7 @@ describe Translation::Infrastructure::Driver::DeepL do
                                      "My name is Jiro.",
                                    ])
 
-    sut = client.translate source, from: SupportedLang::English, to: SupportedLang::Japanese
+    sut = client.translate source, from: "en", to: "ja"
     expected = Model::TargetText.new(sections: [
       Model::TargetText::Section.new(source: "Hello, Good Morning.", target: "こんにちは、おはようございます。"),
       Model::TargetText::Section.new(source: "My name is Jiro.", target: "私の名前はJiroです。"),

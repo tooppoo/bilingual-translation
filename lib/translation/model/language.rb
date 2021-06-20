@@ -12,8 +12,8 @@ module Translation
       end
 
       module Supported
-        English = "EN"
-        Japanese = "JA"
+        English = "en"
+        Japanese = "ja"
 
         def self.contains?(lang)
           constants.any? do |supported|

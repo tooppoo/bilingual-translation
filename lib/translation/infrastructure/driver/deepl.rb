@@ -30,8 +30,8 @@ module Translation
           #   ["text", "Who are you?"],
           # ]
           texts = source.sentences.map { |s| ["text", s.to_s] }
-          source_lang = ["source_lang", from.to_s]
-          target_lang = ["target_lang", to.to_s]
+          source_lang = ["source_lang", from.to_s.upcase]
+          target_lang = ["target_lang", to.to_s.upcase]
           auth_key = ["auth_key", @auth_key]
 
           response = post("https://#{@domain}/v2/translate", [
