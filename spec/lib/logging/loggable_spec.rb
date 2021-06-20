@@ -2,8 +2,12 @@
 
 require "logging/loggable"
 
-RSpec::Matchers.define :hash_with_key do |key|
-  match { |actual| actual.has_key? key }
+RSpec::Matchers.define :hash_with_keys do |*keys|
+  match do |actual|
+    keys.all? do |key|
+      actual.has_key? key
+    end
+  end
 end
 
 describe Logging::Loggable do
@@ -31,8 +35,8 @@ describe Logging::Loggable do
 
   let(:logger) do
     double("logger").tap do |stub|
-      expect(stub).to receive("info").with(hash_with_key(:parameters))
-      expect(stub).to receive("info").with(hash_with_key(:return))
+      expect(stub).to receive("info").with(hash_with_keys(:parameters, :receiver))
+      expect(stub).to receive("info").with(hash_with_keys(:return, :receiver))
     end
   end
   let(:decorator) do
