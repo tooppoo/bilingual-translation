@@ -1,2 +1,42 @@
-<h1>Index#index</h1>
-<p>Find me in app/views/index/index.html.erb</p>
+<div class="h-screen">
+  <header class="h-1/6 flex flex-row items-center p-3">
+    <button
+      id="translate"
+      class="w-32 h-8 border-2"
+    >
+      翻訳
+    </button>
+  </header>
+  <article class="flex flex-row h-5/6 p-3">
+    <section
+      name="source-text"
+      class="flex-1 flex flex-col pr-2.5"
+    >
+      <label
+        for="source-text"
+        class="text-2xl"
+      >
+        原文
+      </label>
+      <textarea
+        id="source-text"
+        class="h-screen border-2"
+      ></textarea>
+    </section>
+    <section
+      name="target-text"
+      class="flex-1 flex flex-col pl-2.5"
+    >
+      <label
+        for="target-text"
+        class="text-2xl"
+      >
+        訳文
+      </label>
+      <textarea
+        id="target-text"
+        class="h-screen border-2"
+      ></textarea>
+    </section>
+  </article>
+</div>
