@@ -4,11 +4,8 @@ require "translation/model"
 
 Model = Translation::Model
 describe Model::Service::Translator do
-  it "should translate text as set of source and target languages" do
-    src_txt = Model::SourceText.new(%w[text1 text2])
-    src_lang = Model::Language::Supported::English
-    target_lang = Model::Language::Supported::Japanese
-
+  let(:src_txt) { Model::SourceText.new(%w[text1 text2]) }
+  let(:driver) do
     driver_mock = double("driver")
     expect(driver_mock).to receive("translate").with(src_txt, from: src_lang, to: target_lang) do |src|
       source_sentences = src.sentences
@@ -19,19 +16,32 @@ describe Model::Service::Translator do
       ])
     end
 
-    formatter = Struct.new("MockFormatter") do
+    driver_mock
+  end
+
+  let(:formatter) do
+    Struct.new("MockFormatter") do
       def format(source:, target:)
         "#{source} -> #{target}"
       end
     end
+  end
 
-    sut = Model::Service::Translator.new(driver: driver_mock)
+  subject(:run_translator_service) do
+    sut = Model::Service::Translator.new(driver: driver)
     input = Model::Service::Translator::Input.new(
       source: src_txt,
       language_pair: Model::Language::LanguagePair.new(source: src_lang, target: target_lang),
       formatter: formatter.new
     )
 
-    expect(sut.run(input)).to eq "text1 -> 文書1\ntext2 -> 文書2"
+    sut.run(input)
+  end
+
+  context "language is supported" do
+    let(:src_lang) { Model::Language::Supported::English }
+    let(:target_lang) { Model::Language::Supported::Japanese }
+
+    it { is_expected.to eq "text1 -> 文書1\ntext2 -> 文書2" }
   end
 end
