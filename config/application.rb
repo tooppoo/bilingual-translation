@@ -18,5 +18,18 @@ module BilingualTranslation
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.x.translation.driver = {
+      # only :deepl supported.
+      default: :deepl,
+      deepl: {
+        auth_key: ENV['DEEPL_AUTH_KEY']
+      }
+    }
+
+    config.x.translation.format = {
+      # only :markdown supported.
+      default: :markdown
+    }
   end
 end
