@@ -44,4 +44,30 @@ describe Model::Service::Translator do
 
     it { is_expected.to eq "text1 -> 文書1\ntext2 -> 文書2" }
   end
+  context "language is not supported" do
+    context "source not supported" do
+      let(:src_lang) { "UNKNOWN" }
+      let(:target_lang) { Model::Language::Supported::Japanese }
+
+      it "should raise error" do
+        expect { run_translator_service }.to raise_error(Model::Language::UnsupportedError)
+      end
+    end
+    context "target not supported" do
+      let(:src_lang) { Model::Language::Supported::English }
+      let(:target_lang) { "UNKNOWN" }
+
+      it "should raise error" do
+        expect { run_translator_service }.to raise_error(Model::Language::UnsupportedError)
+      end
+    end
+    context "both of source and target not supported" do
+      let(:src_lang) { "UNKNOWN" }
+      let(:target_lang) { "UNKNOWN" }
+
+      it "should raise error" do
+        expect { run_translator_service }.to raise_error(Model::Language::UnsupportedError)
+      end
+    end
+  end
 end

@@ -3,6 +3,8 @@
 module Translation
   module Model
     module Language
+      class UnsupportedError < RuntimeError; end
+
       module Supported
         English = "EN"
         Japanese = "JA"
