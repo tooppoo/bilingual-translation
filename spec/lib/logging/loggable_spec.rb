@@ -35,8 +35,7 @@ describe Logging::Loggable do
 
   let(:logger) do
     double("logger").tap do |stub|
-      expect(stub).to receive("info").with(hash_with_keys(:parameters, :receiver))
-      expect(stub).to receive("info").with(hash_with_keys(:return, :receiver))
+      expect(stub).to receive("info").with(hash_with_keys(:parameters, :receiver, :return)).once
     end
   end
   let(:decorator) do

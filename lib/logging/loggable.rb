@@ -29,8 +29,6 @@ module Logging
           receiver.singleton_class.define_method m do |*args|
             receiver_name = "#{receiver.class}##{m.to_s}"
 
-            logger.send level, ({ parameters: args, receiver: receiver_name })
-
             result = case args
                      in [*pos, keywords] if keywords.is_a? Hash
                        original_method.call *pos, **keywords
@@ -39,7 +37,11 @@ module Logging
                      end
 
             result.tap do |r|
-              logger.send level, ({ return: r, receiver: receiver_name })
+              logger.send level, ({
+                receiver: receiver_name,
+                parameters: args,
+                return: r,
+              })
             end
           end
         end
