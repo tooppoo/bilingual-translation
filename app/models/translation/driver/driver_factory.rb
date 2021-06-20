@@ -6,14 +6,18 @@ module Translation
   module Driver
     module DriverFactory
       class << self
+        include ::WatchMethod
 
         def use(name)
           send(name)
         end
 
         def deepl
-          ::Translation::Infrastructure::Driver::DeepL.free_plan(
-            auth_key: Rails.configuration.x.translation.driver[:deepl][:auth_key]
+          watch(
+            ::Translation::Infrastructure::Driver::DeepL.free_plan(
+              auth_key: Rails.configuration.x.translation.driver[:deepl][:auth_key]
+            ),
+            about: [:translate]
           )
         end
       end

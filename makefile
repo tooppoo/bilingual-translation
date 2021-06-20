@@ -7,7 +7,7 @@ init:
 	bundle install
 
 local:
-	./bin/sprint rails server
+	./bin/spring rails server
 
 test:
 	bundle exec rspec

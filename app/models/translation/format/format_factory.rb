@@ -6,13 +6,17 @@ module Translation
   module Format
     module FormatFactory
       class << self
+        include ::WatchMethod
 
         def use(name)
           send(name)
         end
 
         def markdown
-          ::Translation::Infrastructure::Format::Markdown.new
+          watch(
+            ::Translation::Infrastructure::Format::Markdown.new,
+            about: [:format]
+          )
         end
       end
     end

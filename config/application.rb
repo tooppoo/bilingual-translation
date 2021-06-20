@@ -31,5 +31,7 @@ module BilingualTranslation
       # only :markdown supported.
       default: :markdown
     }
+
+    config.x.loggable.level = :info
   end
 end
