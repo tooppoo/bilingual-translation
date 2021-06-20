@@ -26,9 +26,9 @@ module Logging
           logger = @logger
           level = @level
 
-          receiver.singleton_class.define_method m do |*args|
-            receiver_name = "#{receiver.class}##{m.to_s}"
+          receiver_name = "#{receiver.class}##{m.to_s}"
 
+          receiver.singleton_class.define_method m do |*args|
             result = case args
                      in [*pos, keywords] if keywords.is_a? Hash
                        original_method.call *pos, **keywords
@@ -43,6 +43,14 @@ module Logging
                 return: r,
               })
             end
+          rescue => e
+            logger.error({
+              receiver: receiver_name,
+              parameters: args,
+              raise: e,
+            })
+
+            raise e
           end
         end
 

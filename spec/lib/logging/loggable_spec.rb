@@ -67,7 +67,7 @@ describe Logging::Loggable do
   context "method raise error" do
     let(:logger) do
       double("logger").tap do |stub|
-        expect(stub).to receive("info").with(hash_with_keys(:parameters, :receiver, :raise)).once
+        expect(stub).to receive("error").with(hash_with_keys(:parameters, :receiver, :raise)).once
       end
     end
 
