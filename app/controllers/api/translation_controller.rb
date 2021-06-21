@@ -2,6 +2,8 @@
 require 'translation/model'
 
 class Api::TranslationController < ApplicationController
+  protect_from_forgery except: :translate
+
   def translate
     formatter = Translation::Format::FormatFactory.use(
       Rails.configuration.x.translation.format[:default]
