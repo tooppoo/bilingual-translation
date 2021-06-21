@@ -18,3 +18,4 @@ build:
 
 test:
 	bundle exec rspec
+	yarn --cwd client test
