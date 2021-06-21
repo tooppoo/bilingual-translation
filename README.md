@@ -1,3 +1,4 @@
+[![CI](https://github.com/tooppoo/bilingual-translation/actions/workflows/ruby.yml/badge.svg)](https://github.com/tooppoo/bilingual-translation/actions/workflows/ruby.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # About
