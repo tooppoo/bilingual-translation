@@ -3,6 +3,8 @@
 .PHONY: local
 .PHONY: build
 .PHONY: test
+.PHONY: test_server
+.PHONY: test_client
 
 init:
 	bundle install
@@ -16,6 +18,9 @@ build:
 		--target static \
 		--devtools
 
-test:
+test: test_server test_client
+
+test_server:
 	bundle exec rspec
+test_client:
 	yarn --cwd client test
