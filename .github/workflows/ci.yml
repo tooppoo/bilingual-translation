@@ -46,5 +46,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.ruby-version }}
+      - name: install
+        run: make init_client
       - name: Run tests
         run: make test_client
