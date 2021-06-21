@@ -48,5 +48,7 @@ jobs:
           node-version: ${{ matrix.ruby-version }}
       - name: install
         run: make init_client
+      - name: Run build
+        run: make build
       - name: Run tests
         run: make test_client
