@@ -77,14 +77,17 @@ export default {
       }
     },
     postcss: {
-      plugins: [
-        require('tailwindcss')(
+      plugins: {
+        tailwindcss: require('tailwindcss')(
           path.join(__dirname, 'tailwind.js')
         ),
-        require('autoprefixer')
-      ]
+        autoprefixer: require('autoprefixer')
+      }
     }
   },
+  buildModules: [
+    '@nuxt/postcss8'
+  ],
   resolve: {
     extensions: ['.js', '.json', '.vue', '.ts'],
     root: path.resolve(__dirname),
