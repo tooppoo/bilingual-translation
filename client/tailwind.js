@@ -135,6 +135,11 @@ module.exports = {
     // padding: '1rem',
   },
 
+  purge: [
+    "./**/*.vue",
+    "./**/*.css",
+  ],
+
   /*
   |-----------------------------------------------------------------------------
   | Colors                                  https://tailwindcss.com/docs/colors
