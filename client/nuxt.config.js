@@ -75,6 +75,14 @@ export default {
           exclude: /(node_modules)/
         })
       }
+    },
+    postcss: {
+      plugins: [
+        require('tailwindcss')(
+          path.join(__dirname, 'tailwind.js')
+        ),
+        require('autoprefixer')
+      ]
     }
   },
   resolve: {
