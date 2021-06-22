@@ -3,6 +3,7 @@ import path from 'path'
 
 export default {
   ssr: false,
+  target: 'static',
 
   rootDir: "../",
   srcDir: "client/",
