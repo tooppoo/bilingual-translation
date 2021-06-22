@@ -4,6 +4,9 @@
   "description": "https://www.chatwork.com/#!rid94766551-1458820386140495872",
   "author": "tooppoo",
   "private": true,
+  "engines": {
+    "yarn": "^1.0"
+  },
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
