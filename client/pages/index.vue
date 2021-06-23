@@ -29,7 +29,6 @@
 <script>
 import TextForm from '~/components/translation/TextForm.vue'
 import * as Interaction from '~/lib/translation/model/interaction'
-import { toTranslation } from '~/lib/translation/infrastructure/state-to-request'
 
 export default {
   name: 'Translation',
@@ -43,19 +42,17 @@ export default {
     onWriteSource: function (written) {
       this.state = Interaction.writeSource(written, this.state)
     },
-    onTranslate: function () {
-      this.translator(this.state).then((updated) => {
-        this.state = updated
-      })
+    onTranslate: async function () {
+      this.state = await this.translator(this.state)
     }
   },
   computed: {
     translator: function () {
       const gateway = {
-        translate: async (state) => {
+        translate: async (params) => {
           const res = await this.$axios.post(
             '/api/translation',
-            toTranslation(state)
+            params
           )
 
           return res.data

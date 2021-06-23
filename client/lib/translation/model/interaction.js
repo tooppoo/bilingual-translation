@@ -1,12 +1,7 @@
+import { data } from './data'
+import { httpRequestContext } from './context/http-request-context'
 
-export const initialize = () => ({
-  source: '',
-  target: '',
-  language: {
-    from: 'en',
-    to: 'ja',
-  }
-})
+export const initialize = () => data.empty
 
 export const writeSource = (source, current) => ({
   ...current,
@@ -14,7 +9,10 @@ export const writeSource = (source, current) => ({
 })
 
 export const translate = (gateway) => (state) =>
-  gateway.translate(state).then(data => ({
-    ...state,
-    target: data.translated.body,
-  }))
+  httpRequestContext.onTranslationRequest.apply(state, (s) =>
+    gateway.translate(s.toPostParams()).then(data => ({
+      ...state,
+      target: data.translated.body,
+    }))
+  )
+
