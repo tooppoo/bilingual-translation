@@ -1,4 +1,5 @@
 import pkg from './package'
+import path from 'path'
 
 export default {
   ssr: false,
