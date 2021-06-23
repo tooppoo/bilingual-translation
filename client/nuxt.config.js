@@ -1,5 +1,4 @@
 import pkg from './package'
-import path from 'path'
 
 export default {
   ssr: false,
@@ -78,15 +77,13 @@ export default {
     },
     postcss: {
       plugins: {
-        tailwindcss: require('tailwindcss')(
-          path.join(__dirname, 'tailwind.js')
-        ),
         autoprefixer: require('autoprefixer')
       }
     }
   },
   buildModules: [
-    '@nuxt/postcss8'
+    '@nuxt/postcss8',
+    '@nuxtjs/tailwindcss'
   ],
   resolve: {
     extensions: ['.js', '.json', '.vue', '.ts'],
