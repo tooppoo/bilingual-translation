@@ -29,6 +29,7 @@
 <script>
 import TextForm from '~/components/translation/TextForm.vue'
 import * as Interaction from '~/lib/translation/model/interaction'
+import { translateGateway } from "~/lib/translation/infrastructure/gateway/axios";
 
 export default {
   name: 'Translation',
@@ -48,16 +49,7 @@ export default {
   },
   computed: {
     translator: function () {
-      const gateway = {
-        translate: async (params) => {
-          const res = await this.$axios.post(
-            '/api/translation',
-            params
-          )
-
-          return res.data
-        }
-      }
+      const gateway = translateGateway.build(this.$axios)
 
       return Interaction.translate(gateway)
     }
