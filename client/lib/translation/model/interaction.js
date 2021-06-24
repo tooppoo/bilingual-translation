@@ -16,3 +16,8 @@ export const translate = (gateway) => (state) =>
     }))
   )
 
+export const Interaction = {
+  initialize,
+  writeSource,
+  translate,
+}

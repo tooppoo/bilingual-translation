@@ -28,7 +28,7 @@
 
 <script>
 import TextForm from '~/components/translation/TextForm.vue'
-import * as Interaction from '~/lib/translation/model/interaction'
+import { Interaction } from '~/lib/translation/model/interaction'
 import { translateGateway } from "~/lib/translation/infrastructure/gateway/axios";
 
 export default {
