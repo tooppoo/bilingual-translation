@@ -6,11 +6,11 @@ const onTranslationRequest = {
       text: data.source.split(/\n{2,}/)
     })
 
-    const r = f(data)
+    const res = f(data)
 
     delete data.toPostParams
 
-    return r
+    return res
   }
 }
 
