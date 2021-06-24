@@ -3,7 +3,7 @@ import { httpRequestContext } from "~/lib/translation/model/context/http-request
 describe('onTranslationRequest', () => {
   const sut = httpRequestContext.onTranslationRequest
 
-  it('should add #translate, which enable only between callback, to data object', () => {
+  it('allow to use #translate only in clojure', () => {
     const data = {
       language: {
         from: 'en',
@@ -28,5 +28,23 @@ text 3`
         `text 3`
       ]
     })
+  })
+
+  it('not allow to use #translate out of clojure', () => {
+    const data = {
+      language: {
+        from: 'en',
+        to: 'ja',
+      },
+      source: `
+text 1
+text 2
+
+text 3`
+    }
+
+    sut.apply(data, d => d.toPostParams())
+
+    expect(data.toPostParams).toBeUndefined()
   })
 })
