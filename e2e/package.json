@@ -1,0 +1,9 @@
+{
+  "name": "bilingual-translation-e2e",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/tooppoo/bilingual-translation/",
+  "author": "philomagi <tooppoo56@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
