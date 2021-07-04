@@ -14,11 +14,12 @@ class Api::TranslationController < ApplicationController
 
     service = Translation::Model::Service::Translator.new(driver: driver)
 
+    parameter = translate_params
     input = Translation::Model::Service::Translator::Input.new(
-      source: Translation::Model::SourceText.new(translate_params[:text]),
+      source: Translation::Model::SourceText.new(parameter[:text]),
       language_pair: Translation::Model::Language::LanguagePair.new(
-        source: translate_params[:language][:from],
-        target: translate_params[:language][:to]
+        source: parameter[:language][:from],
+        target: parameter[:language][:to]
       ),
       formatter: formatter
     )
@@ -37,9 +38,9 @@ class Api::TranslationController < ApplicationController
   #   }
   # }
   private def translate_params
-    params.tap do |p|
-      p.permit(text: [])
-      p.require(:language).permit(:from, :to)
-    end
+    {
+      text: params.require(:text),
+      language: params.require(:language).permit(:from, :to)
+    }
   end
 end
