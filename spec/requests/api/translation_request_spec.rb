@@ -46,7 +46,6 @@ RSpec.describe "Api::Translations", type: :request do
       it "return translated texts as json" do
         post "/api/translation", xhr: true, params: params
 
-        expected_body =
         expect(JSON.parse(response.body)).to eq({
             "translated" => {
             "body" => <<"EOS"
