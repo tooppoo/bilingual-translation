@@ -25,7 +25,7 @@ jobs:
     # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
     # change this to (see https://github.com/ruby/setup-ruby#versioning):
     # uses: ruby/setup-ruby@v1
-      uses: ruby/setup-ruby@77d7ca9909feff6000fd464c478e749c3f067e29
+      uses: ruby/setup-ruby@ae9cb3b565e36682a2c6045e4f664388da4c73aa
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
