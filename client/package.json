@@ -46,7 +46,7 @@
     "jest": "27.1.1",
     "nodemon": "2.0.12",
     "postcss": "8.3.6",
-    "prettier": "2.3.2",
+    "prettier": "2.4.0",
     "vue-jest": "3.0.7"
   }
 }
