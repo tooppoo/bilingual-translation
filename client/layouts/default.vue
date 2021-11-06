@@ -1,10 +1,7 @@
 <template>
-  <div>
-    <header class="flex justify-center">
-      <nuxt-link to="/" class="text-center w-40 mr-2 ml-2 border-r-2 border-l-2">翻訳</nuxt-link>
-      <nuxt-link to="/clean-up" class="text-center w-40 mr-2 ml-2 border-r-2 border-l-2">整形</nuxt-link>
-    </header>
-    <nuxt />
+  <div class="flex">
+    <left-board id="left-board" class="flex-initial" />
+    <nuxt id ="right-board" class="flex-auto" />
   </div>
 </template>
 
@@ -31,7 +28,12 @@ html {
 </style>
 
 <script>
+import LeftBoard from "../components/translation/left-board/LeftBoard";
+
 export default {
-  name: 'DefaultLayout'
+  name: 'DefaultLayout',
+  components: {
+    LeftBoard,
+  },
 }
 </script>
