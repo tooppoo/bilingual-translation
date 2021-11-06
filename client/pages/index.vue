@@ -18,6 +18,7 @@
       </button>
     </header>
     <article class="h-4/5 flex flex-row">
+      <tool-tip />
       <text-form
         name="source-text"
         class="h-full"
@@ -45,10 +46,12 @@
 import TextForm from '~/components/translation/form/TextForm.vue'
 import { Interaction } from '~/lib/translation/model/interaction'
 import { translateGateway } from "~/lib/translation/infrastructure/gateway/axios";
+import ToolTip from "../components/translation/form/ToolTip";
 
 export default {
   name: 'Translation',
   components: {
+    ToolTip,
     TextForm,
   },
   data: () => ({
