@@ -1,5 +1,5 @@
 <template>
-  <nuxt class="pt-8 px-4"/>
+  <nuxt class="h-screen py-8 px-4"/>
 </template>
 
 <style>

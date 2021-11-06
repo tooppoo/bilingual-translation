@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen">
+  <div>
     <header class="flex flex-col justify-between h-1/5">
       <text-form
         name="origin-text"
