@@ -12,7 +12,7 @@
       </text-form>
       <button
         class="text-2xl text-center border-2 shadow"
-        @click="() => onWriteSource(origin.body)"
+        @click="() => onWriteSource(data.origin.body)"
       >
         ↓
       </button>
@@ -22,7 +22,7 @@
       <text-form
         name="source-text"
         class="h-full"
-        :value="data.source"
+        :value="data.source.body"
         @input="e => onWriteSource(e.target.value)"
       >
         <template v-slot:caption>
@@ -55,20 +55,13 @@ export default {
     TextForm,
   },
   data: () => ({
-    origin: {
-      body: '',
-      show: true,
-    },
     data: Interaction.initialize(),
   }),
   methods: {
     onSetOrigin: function (event) {
       const newOrigin = event.target.value
-      this.origin.body = newOrigin
 
-      if (this.data.source.isEmpty()) return
-
-      this.data = Interaction.initialize(newOrigin)
+      this.data = Interaction.changeOrigin(newOrigin, this.data)
     },
     onWriteSource: function (written) {
       this.data = Interaction.writeSource(written, this.data)
@@ -91,7 +84,7 @@ export default {
     },
     sentenceSplitter: function () {
       return Interaction.splitBySentence('\\.')
-    }
+    },
   }
 }
 </script>

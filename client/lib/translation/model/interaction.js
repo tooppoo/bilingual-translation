@@ -7,9 +7,29 @@ const initialize = (source) => source
   ? { ...data.empty(), source }
   : data.empty()
 
+const changeOrigin = (newOrigin, current) => {
+  const next = Object.create(current)
+  next.origin = {
+    ...current.origin,
+    body: newOrigin
+  }
+
+  if (current.source.isEmpty()) {
+    next.source = {
+      ...current.source,
+      body: newOrigin
+    }
+  }
+
+  return next
+}
+
 const writeSource = (source, current) => ({
   ...current,
-  source,
+  source: {
+    ...current.source,
+    body: source,
+  },
 })
 
 const translate = (gateway) => (state) =>
@@ -29,6 +49,7 @@ const splitBySentence =
 
 export const Interaction = {
   initialize,
+  changeOrigin,
   writeSource,
   translate,
   cleanUp,
