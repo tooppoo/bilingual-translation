@@ -4,7 +4,6 @@
       <text-form
         name="origin-text"
         class="h-full"
-        caption="原文"
         @input="onSetOrigin"
       >
         <template v-slot:caption>
@@ -52,34 +51,28 @@ export default {
       body: '',
       show: true,
     },
+    data: Interaction.initialize(),
   }),
   methods: {
-    onSetOrigin: function (body) {
-      this.origin.body = body
+    onSetOrigin: function (newOrigin) {
+      this.origin.body = newOrigin
 
-      this.$store.commit(
-        messages.mutations.overwrite,
-        {
-          ...this.state,
-          source: origin,
-        }
-      )
+      this.data = {
+        ...Interaction.initialize(),
+        source: newOrigin,
+      }
     },
     onWriteSource: function (written) {
-      const updated = Interaction.writeSource(written, this.state)
-
-      this.$store.commit(messages.mutations.overwrite, updated)
+      this.data = Interaction.writeSource(written, this.data)
     },
     onTranslate: async function () {
-      const translated = await this.translator(this.state)
-
-      this.$store.commit(messages.mutations.overwrite, translated)
-    }
+      this.data = await this.translator(this.data)
+    },
+    onRemoveNewLine: function () {
+      this.data = Interaction.cleanUp({ ...this.data })
+    },
   },
   computed: {
-    data: function () {
-      return this.$store.state.translation.data
-    },
     translator: function () {
       const gateway = translateGateway.build(this.$axios)
 
