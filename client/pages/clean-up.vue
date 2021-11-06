@@ -9,6 +9,14 @@
       >
         整形
       </button>
+      <button
+        id="finish-clean-up"
+        type="button"
+        class="w-64 h-8 border-2"
+        @click="onFinish"
+      >
+        整形後を使用
+      </button>
     </header>
     <article class="flex flex-row h-90p p-3">
       <text-form
@@ -47,7 +55,11 @@ export default {
     },
     onCleanUp: function () {
       this.cleaned = Interaction.cleanUp({ ...this.origin })
-    }
+    },
+    onFinish: function () {
+      this.$store.commit(messages.mutations.overwrite, this.cleaned)
+      this.cleaned = Interaction.initialize()
+    },
   },
   computed: {
     origin: function () {
