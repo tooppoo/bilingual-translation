@@ -29,6 +29,7 @@
 <script>
 import TextForm from "../components/translation/TextForm";
 import { Interaction } from "../lib/translation/model/interaction";
+import { messages } from "../store/translation";
 
 export default {
   name: "CleanUp",
@@ -36,17 +37,23 @@ export default {
     TextForm,
   },
   data: () => ({
-    origin: Interaction.initialize(),
     cleaned: Interaction.initialize(),
   }),
   methods: {
     onWriteSource: function (written) {
-      this.origin = Interaction.writeSource(written, this.origin)
+      const updated = Interaction.writeSource(written, this.state)
+
+      this.$store.commit(messages.mutations.overwrite, updated)
     },
     onCleanUp: function () {
       this.cleaned = Interaction.cleanUp({ ...this.origin })
     }
   },
+  computed: {
+    origin: function () {
+      return this.$store.state.translation.data
+    }
+  }
 };
 </script>
 

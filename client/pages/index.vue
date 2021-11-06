@@ -14,13 +14,13 @@
       <text-form
         name="source-text"
         caption="原文"
-        :value="state.source"
+        :value="data.source"
         @input="onWriteSource"
       />
       <text-form
         name="target-text"
         caption="訳文"
-        :value="state.target"
+        :value="data.target"
       />
     </article>
   </div>
@@ -30,24 +30,32 @@
 import TextForm from '~/components/translation/TextForm.vue'
 import { Interaction } from '~/lib/translation/model/interaction'
 import { translateGateway } from "~/lib/translation/infrastructure/gateway/axios";
+import { messages } from "../store/translation";
 
 export default {
   name: 'Translation',
   components: {
     TextForm,
   },
-  data: () => ({
-    state: Interaction.initialize()
-  }),
   methods: {
+    created() {
+      console.debug('created')
+    },
     onWriteSource: function (written) {
-      this.state = Interaction.writeSource(written, this.state)
+      const updated = Interaction.writeSource(written, this.state)
+
+      this.$store.commit(messages.mutations.overwrite, updated)
     },
     onTranslate: async function () {
-      this.state = await this.translator(this.state)
+      const translated = await this.translator(this.state)
+
+      this.$store.commit(messages.mutations.overwrite, translated)
     }
   },
   computed: {
+    data: function () {
+      return this.$store.state.translation.data
+    },
     translator: function () {
       const gateway = translateGateway.build(this.$axios)
 
