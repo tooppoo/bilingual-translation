@@ -10,14 +10,19 @@
           原文
         </template>
       </text-form>
-      <button
-        class="text-2xl text-center border-2 shadow"
-        @click="() => onWriteSource(data.origin.body)"
-      >
-        ↓
-      </button>
+      <div class="my-1" />
+      <div>
+        <button
+          class="text-xl text-center border-2 shadow w-24"
+          @click="() => onWriteSource(data.origin.body)"
+        >
+          上書き
+        </button>
+        <span class="text-xl">↓</span>
+      </div>
     </header>
-    <article class="h-4/5 flex flex-row">
+    <div class="my-2" />
+    <article class="h-4/5 flex flex-row items-center">
       <tool-tip />
       <text-form
         name="source-text"
@@ -29,6 +34,17 @@
           整形文
         </template>
       </text-form>
+      <div
+        class="w-24 text-center"
+      >
+        <button
+          class="text-xl text-center border-2 shadow w-full"
+          @click="onTranslate"
+        >
+          翻訳
+        </button>
+        <div class="text-xl">→</div>
+      </div>
       <text-form
         name="target-text"
         class="h-full"
