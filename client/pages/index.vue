@@ -33,7 +33,7 @@
           @input="e => onWriteSource(e.target.value)"
         >
           <template v-slot:caption>
-            整形文
+            翻訳前
           </template>
         </text-form>
       </section>
@@ -57,7 +57,7 @@
           :value="data.target"
         >
           <template v-slot:caption>
-            訳文
+            翻訳後
           </template>
         </text-form>
       </section>
