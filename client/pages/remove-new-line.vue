@@ -4,18 +4,18 @@
       <button
         id="clean-up"
         type="button"
-        class="w-32 h-8 border-2"
+        class="w-52 h-8 border-2"
         @click="onCleanUp"
       >
-        整形
+        改行を削除
       </button>
       <button
         id="finish-clean-up"
         type="button"
-        class="w-64 h-8 border-2"
+        class="w-52 h-8 border-2"
         @click="onFinish"
       >
-        整形後を使用
+        削除後を使用
       </button>
     </header>
     <article class="flex flex-row h-90p p-3">
@@ -40,7 +40,7 @@ import { Interaction } from "../lib/translation/model/interaction";
 import { messages } from "../store/translation";
 
 export default {
-  name: "CleanUp",
+  name: "RemoveNewLine",
   components: {
     TextForm,
   },
