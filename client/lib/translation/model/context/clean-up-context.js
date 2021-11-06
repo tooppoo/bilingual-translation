@@ -4,7 +4,7 @@ const onCleanUp = {
     d.cleanUp = function () {
       const c = Object.create(this)
 
-      c.source = this.source
+      c.source.body = this.source.body
         .replace(/- ?\n/g, '')
         .replace(/([^.])\n/g, "$1")
 

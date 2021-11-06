@@ -18,14 +18,18 @@ describe('Interaction#translate', () => {
 
   it('should create data with translated text', async () => {
     await expect(sut({
-      source: 'source-text',
+      source: {
+        body: 'source-text'
+      },
       target: '',
       language: {
         from: 'en',
         to: 'ja',
       },
     })).resolves.toStrictEqual({
-      source: 'source-text',
+      source: {
+        body: 'source-text'
+      },
       target: 'translated text',
       language: {
         from: 'en',
@@ -36,13 +40,15 @@ describe('Interaction#translate', () => {
 
   it('should use converted data as request parameter', async () => {
     await sut({
-      source: `
+      source: {
+        body: `
 test 1
 test 2
 
 test 3
 
 test 4`,
+      },
       target: '',
       language: {
         from: 'en',

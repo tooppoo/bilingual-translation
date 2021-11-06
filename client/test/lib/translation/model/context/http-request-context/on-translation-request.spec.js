@@ -9,11 +9,13 @@ describe('onTranslationRequest', () => {
         from: 'en',
         to: 'ja',
       },
-      source: `
+      source: {
+        body: `
 text 1
 text 2
 
-text 3`
+text 3`,
+      }
     }
 
     expect(
@@ -36,11 +38,13 @@ text 3`
         from: 'en',
         to: 'ja',
       },
-      source: `
+      source: {
+        body: `
 text 1
 text 2
 
-text 3`
+text 3`,
+      }
     }
 
     sut.apply(data, d => d.toPostParams())

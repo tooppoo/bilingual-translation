@@ -3,7 +3,7 @@ const onTranslationRequest = {
   apply(data, f) {
     data.toPostParams = () => ({
       language: data.language,
-      text: data.source.split(/\n{2,}/)
+      text: data.source.body.split(/\n{2,}/)
     })
 
     const res = f(data)

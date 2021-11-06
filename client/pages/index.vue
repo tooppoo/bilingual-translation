@@ -66,7 +66,7 @@ export default {
       const newOrigin = event.target.value
       this.origin.body = newOrigin
 
-      if (this.data.sourceIsEmpty()) return
+      if (this.data.source.isEmpty()) return
 
       this.data = Interaction.initialize(newOrigin)
     },
