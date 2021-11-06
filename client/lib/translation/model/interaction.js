@@ -29,7 +29,7 @@ const translate = (gateway) => (state) =>
   httpRequestContext.onTranslationRequest.apply(state, (s) =>
     gateway.translate(s.toPostParams()).then(data => ({
       ...state,
-      target: data.translated.body,
+      translated: data.translated.body,
     }))
   )
 const cleanUp = (state) => cleanUpContext.onCleanUp.apply(

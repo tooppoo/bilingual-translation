@@ -9,7 +9,7 @@ const empty = () => ({
       return [null, '', (void 0)].some(v => this.body === v)
     },
   },
-  target: '',
+  translated: '',
   language: {
     from: 'en',
     to: 'ja',
@@ -18,7 +18,7 @@ const empty = () => ({
     return {
       origin: { ...this.origin },
       source: { ...this.source },
-      target: this.target,
+      translated: this.translated,
       language: { ...this.language },
       clone: this.clone,
     }

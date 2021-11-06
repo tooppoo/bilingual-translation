@@ -54,7 +54,7 @@
         <text-form
           name="target-text"
           class="h-full"
-          :value="data.target"
+          :value="data.translated"
         >
           <template v-slot:caption>
             翻訳後
