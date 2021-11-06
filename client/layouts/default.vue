@@ -1,7 +1,6 @@
 <template>
-  <div class="flex">
-    <left-board id="left-board" class="flex-initial" />
-    <nuxt id ="right-board" class="flex-auto" />
+  <div>
+    <nuxt/>
   </div>
 </template>
 

@@ -1,27 +1,37 @@
 <template>
   <div class="h-screen">
-    <header class="h-10p flex flex-row items-center p-3">
-      <button
-        id="translate"
-        type="button"
-        class="w-32 h-8 border-2"
-        @click="onTranslate"
+    <header class="h-1/5 flex flex-row items-center p-3">
+      <text-form
+        name="origin-text"
+        class="h-full"
+        caption="原文"
+        @input="onSetOrigin"
       >
-        翻訳
-      </button>
+        <template v-slot:caption>
+          原文
+        </template>
+      </text-form>
     </header>
-    <article class="flex flex-row h-90p p-3">
+    <article class="h-4/5 flex flex-row p-3">
       <text-form
         name="source-text"
-        caption="原文"
+        class="h-full"
         :value="data.source"
         @input="onWriteSource"
-      />
+      >
+        <template v-slot:caption>
+          整形文
+        </template>
+      </text-form>
       <text-form
         name="target-text"
-        caption="訳文"
+        class="h-full"
         :value="data.target"
-      />
+      >
+        <template v-slot:caption>
+          訳文
+        </template>
+      </text-form>
     </article>
   </div>
 </template>
@@ -37,9 +47,23 @@ export default {
   components: {
     TextForm,
   },
+  data: () => ({
+    origin: {
+      body: '',
+      show: true,
+    },
+  }),
   methods: {
-    created() {
-      console.debug('created')
+    onSetOrigin: function (body) {
+      this.origin.body = body
+
+      this.$store.commit(
+        messages.mutations.overwrite,
+        {
+          ...this.state,
+          source: origin,
+        }
+      )
     },
     onWriteSource: function (written) {
       const updated = Interaction.writeSource(written, this.state)

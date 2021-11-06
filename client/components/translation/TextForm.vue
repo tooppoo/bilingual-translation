@@ -1,16 +1,16 @@
 <template>
   <section
-    class="flex-1 flex flex-col pr-2.5"
+    class="flex-1 flex flex-col"
   >
     <label
       class="text-2xl"
     >
-      {{ caption }}
+      <slot name="caption"></slot>
     </label>
     <textarea
       @change="onChange"
       :value="value"
-      class="h-screen border-2"
+      class="border-2 h-full"
     ></textarea>
   </section>
 </template>
@@ -19,10 +19,6 @@
 export default {
   name: "TextForm",
   props: {
-    caption: {
-      type: String,
-      required: true
-    },
     value: {
       type: String,
       default: '',
