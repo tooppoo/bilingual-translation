@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import TextForm from '~/components/translation/TextForm.vue'
+import TextForm from '~/components/translation/form/TextForm.vue'
 import { Interaction } from '~/lib/translation/model/interaction'
 import { translateGateway } from "~/lib/translation/infrastructure/gateway/axios";
 

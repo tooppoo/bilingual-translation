@@ -25,12 +25,7 @@ html {
 </style>
 
 <script>
-import LeftBoard from "../components/translation/left-board/LeftBoard";
-
 export default {
   name: 'DefaultLayout',
-  components: {
-    LeftBoard,
-  },
 }
 </script>
