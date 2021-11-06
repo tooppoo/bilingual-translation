@@ -1,8 +1,8 @@
 <template>
   <div>
     <header class="flex justify-center">
-      <nuxt-link to="/">翻訳</nuxt-link>
-      <nuxt-link to="/CleanUp">整形</nuxt-link>
+      <nuxt-link class="text-center w-40 mr-2 ml-2 border-r-2 border-l-2" to="/">翻訳</nuxt-link>
+      <nuxt-link class="text-center w-40 mr-2 ml-2 border-r-2 border-l-2" to="/CleanUp">整形</nuxt-link>
     </header>
     <nuxt />
   </div>
