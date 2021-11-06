@@ -1,7 +1,7 @@
 import { data } from './data'
 import { httpRequestContext } from './context/http-request-context'
 
-export const initialize = () => data.empty
+export const initialize = () => data.empty()
 
 export const writeSource = (source, current) => ({
   ...current,
