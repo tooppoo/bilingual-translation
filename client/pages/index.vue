@@ -23,19 +23,22 @@
     </header>
     <div class="my-2" />
     <article class="h-4/5 flex flex-row items-center">
-      <tool-tip />
-      <text-form
-        name="source-text"
-        class="h-full"
-        :value="data.source.body"
-        @input="e => onWriteSource(e.target.value)"
+      <section
+        class="h-full flex-auto"
       >
-        <template v-slot:caption>
-          整形文
-        </template>
-      </text-form>
-      <div
-        class="w-24 text-center"
+        <text-form
+          name="source-text"
+          class="h-full"
+          :value="data.source.body"
+          @input="e => onWriteSource(e.target.value)"
+        >
+          <template v-slot:caption>
+            整形文
+          </template>
+        </text-form>
+      </section>
+      <section
+        class="w-24 text-center flex-initial"
       >
         <button
           class="text-xl text-center border-2 shadow w-full"
@@ -44,16 +47,20 @@
           翻訳
         </button>
         <div class="text-xl">→</div>
-      </div>
-      <text-form
-        name="target-text"
-        class="h-full"
-        :value="data.target"
+      </section>
+      <section
+        class="h-full flex-auto"
       >
-        <template v-slot:caption>
-          訳文
-        </template>
-      </text-form>
+        <text-form
+          name="target-text"
+          class="h-full"
+          :value="data.target"
+        >
+          <template v-slot:caption>
+            訳文
+          </template>
+        </text-form>
+      </section>
     </article>
   </div>
 </template>
