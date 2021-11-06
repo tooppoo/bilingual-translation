@@ -71,12 +71,18 @@ export default {
     onRemoveNewLine: function () {
       this.data = Interaction.cleanUp({ ...this.data })
     },
+    onSplitBySentence: function () {
+      this.data = this.sentenceSplitter(this.data)
+    },
   },
   computed: {
     translator: function () {
       const gateway = translateGateway.build(this.$axios)
 
       return Interaction.translate(gateway)
+    },
+    sentenceSplitter: function () {
+      return Interaction.splitBySentence('\\.')
     }
   }
 }

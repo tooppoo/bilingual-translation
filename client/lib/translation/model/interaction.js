@@ -21,7 +21,9 @@ const cleanUp = (state) => cleanUpContext.onCleanUp.apply(
   state,
   s => s.cleanUp()
 )
-const splitBySentence = (period) => (state) => splitContext.bySentence.apply(state, s => s.split(period))
+const splitBySentence =
+  (period) =>
+  (state) => splitContext.bySentence.apply(state, s => s.split(period))
 
 export const Interaction = {
   initialize,
