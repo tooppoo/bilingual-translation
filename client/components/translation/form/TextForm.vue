@@ -9,6 +9,7 @@
     </label>
     <textarea
       @change="onChange"
+      @select="onSelect"
       :value="value"
       class="border-2 h-full"
     ></textarea>
@@ -26,8 +27,11 @@ export default {
   },
   methods: {
     onChange: function (event) {
-      this.$emit('input', event.target.value)
+      this.$emit('input', event)
     },
+    onSelect: function (event) {
+      this.$emit('select', event)
+    }
   }
 }
 </script>

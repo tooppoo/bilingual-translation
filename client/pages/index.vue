@@ -62,12 +62,15 @@ export default {
     data: Interaction.initialize(),
   }),
   methods: {
-    onSetOrigin: function (newOrigin) {
+    onSetOrigin: function (event) {
+      const newOrigin = event.target.value
       this.origin.body = newOrigin
 
       this.data = Interaction.initialize(newOrigin)
     },
-    onWriteSource: function (written) {
+    onWriteSource: function (event) {
+      const written = event.target.value
+
       this.data = Interaction.writeSource(written, this.data)
     },
     onTranslate: async function () {
