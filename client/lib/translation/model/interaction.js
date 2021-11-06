@@ -1,5 +1,6 @@
 import { data } from './data'
 import { httpRequestContext } from './context/http-request-context'
+import { cleanUpContext } from "./context/clean-up-context";
 
 export const initialize = () => data.empty()
 
@@ -15,9 +16,14 @@ export const translate = (gateway) => (state) =>
       target: data.translated.body,
     }))
   )
+export const cleanUp = (state) => cleanUpContext.onCleanUp.apply(
+  state,
+  s => s.cleanUp()
+)
 
 export const Interaction = {
   initialize,
   writeSource,
   translate,
+  cleanUp,
 }

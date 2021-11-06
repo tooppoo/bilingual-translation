@@ -29,7 +29,6 @@
 <script>
 import TextForm from "../components/translation/TextForm";
 import { Interaction } from "../lib/translation/model/interaction";
-import { cleanUpContext } from "../lib/translation/model/context/clean-up-context";
 
 export default {
   name: "CleanUp",
@@ -45,9 +44,7 @@ export default {
       this.origin = Interaction.writeSource(written, this.origin)
     },
     onCleanUp: function () {
-      cleanUpContext.onCleanUp.apply({ ...this.origin }, d => {
-        this.cleaned = d.cleanUp()
-      })
+      this.cleaned = Interaction.cleanUp({ ...this.origin })
     }
   },
 };
