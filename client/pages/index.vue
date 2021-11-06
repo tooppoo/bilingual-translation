@@ -61,19 +61,19 @@ export default {
     onSetOrigin: function (event) {
       const newOrigin = event.target.value
 
-      this.data = Interaction.changeOrigin(newOrigin, this.data)
+      this.data = Interaction.changeOrigin(newOrigin, this.data.clone())
     },
     onWriteSource: function (written) {
-      this.data = Interaction.writeSource(written, this.data)
+      this.data = Interaction.writeSource(written, this.data.clone())
     },
     onTranslate: async function () {
-      this.data = await this.translator(this.data)
+      this.data = await this.translator(this.data.clone())
     },
     onRemoveNewLine: function () {
-      this.data = Interaction.cleanUp({ ...this.data })
+      this.data = Interaction.cleanUp(this.data.clone())
     },
     onSplitBySentence: function () {
-      this.data = this.sentenceSplitter(this.data)
+      this.data = this.sentenceSplitter(this.data.clone())
     },
   },
   computed: {

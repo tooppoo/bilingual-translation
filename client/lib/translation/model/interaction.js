@@ -9,28 +9,21 @@ const initialize = (source) => source
 
 const changeOrigin = (newOrigin, current) => {
   const next = Object.create(current)
-  next.origin = {
-    ...current.origin,
-    body: newOrigin
-  }
+  next.origin.body = newOrigin
 
   if (current.source.isEmpty()) {
-    next.source = {
-      ...current.source,
-      body: newOrigin
-    }
+    next.source.body = newOrigin
   }
 
   return next
 }
 
-const writeSource = (source, current) => ({
-  ...current,
-  source: {
-    ...current.source,
-    body: source,
-  },
-})
+const writeSource = (source, current) => {
+  const next = Object.create(current)
+  next.source.body = source
+
+  return next
+}
 
 const translate = (gateway) => (state) =>
   httpRequestContext.onTranslationRequest.apply(state, (s) =>
