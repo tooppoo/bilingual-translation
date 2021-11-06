@@ -1,29 +1,32 @@
 import { data } from './data'
 import { httpRequestContext } from './context/http-request-context'
 import { cleanUpContext } from "./context/clean-up-context";
+import { splitContext } from "./context/split-context";
 
-export const initialize = () => data.empty()
+const initialize = () => data.empty()
 
-export const writeSource = (source, current) => ({
+const writeSource = (source, current) => ({
   ...current,
   source,
 })
 
-export const translate = (gateway) => (state) =>
+const translate = (gateway) => (state) =>
   httpRequestContext.onTranslationRequest.apply(state, (s) =>
     gateway.translate(s.toPostParams()).then(data => ({
       ...state,
       target: data.translated.body,
     }))
   )
-export const cleanUp = (state) => cleanUpContext.onCleanUp.apply(
+const cleanUp = (state) => cleanUpContext.onCleanUp.apply(
   state,
   s => s.cleanUp()
 )
+const splitBySentence = (period) => (state) => splitContext.bySentence.apply(state, s => s.split(period))
 
 export const Interaction = {
   initialize,
   writeSource,
   translate,
   cleanUp,
+  splitBySentence,
 }
