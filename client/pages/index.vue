@@ -11,10 +11,10 @@
         </template>
       </text-form>
       <button
-        class="text-2xl border-2 shadow"
-        @click="() => onSetOrigin(origin.body)"
+        class="text-2xl text-center border-2 shadow"
+        @click="() => onWriteSource(origin.body)"
       >
-        原文に戻す
+        ↓
       </button>
     </header>
     <article class="h-4/5 flex flex-row">
@@ -23,7 +23,7 @@
         name="source-text"
         class="h-full"
         :value="data.source"
-        @input="onWriteSource"
+        @input="e => onWriteSource(e.target.value)"
       >
         <template v-slot:caption>
           整形文
@@ -66,11 +66,11 @@ export default {
       const newOrigin = event.target.value
       this.origin.body = newOrigin
 
+      if (this.data.sourceIsEmpty()) return
+
       this.data = Interaction.initialize(newOrigin)
     },
-    onWriteSource: function (event) {
-      const written = event.target.value
-
+    onWriteSource: function (written) {
       this.data = Interaction.writeSource(written, this.data)
     },
     onTranslate: async function () {
