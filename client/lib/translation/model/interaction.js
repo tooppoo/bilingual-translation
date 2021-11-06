@@ -3,7 +3,9 @@ import { httpRequestContext } from './context/http-request-context'
 import { cleanUpContext } from "./context/clean-up-context";
 import { splitContext } from "./context/split-context";
 
-const initialize = () => data.empty()
+const initialize = (source) => source
+  ? { ...data.empty(), source }
+  : data.empty()
 
 const writeSource = (source, current) => ({
   ...current,

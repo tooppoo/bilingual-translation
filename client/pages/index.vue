@@ -1,6 +1,6 @@
 <template>
   <div class="h-screen">
-    <header class="h-1/5 flex flex-row items-center p-3">
+    <header class="flex flex-col justify-between h-1/5">
       <text-form
         name="origin-text"
         class="h-full"
@@ -10,8 +10,14 @@
           原文
         </template>
       </text-form>
+      <button
+        class="text-2xl border-2 shadow"
+        @click="() => onSetOrigin(origin.body)"
+      >
+        原文に戻す
+      </button>
     </header>
-    <article class="h-4/5 flex flex-row p-3">
+    <article class="h-4/5 flex flex-row">
       <text-form
         name="source-text"
         class="h-full"
@@ -56,10 +62,7 @@ export default {
     onSetOrigin: function (newOrigin) {
       this.origin.body = newOrigin
 
-      this.data = {
-        ...Interaction.initialize(),
-        source: newOrigin,
-      }
+      this.data = Interaction.initialize(newOrigin)
     },
     onWriteSource: function (written) {
       this.data = Interaction.writeSource(written, this.data)

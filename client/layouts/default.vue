@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <nuxt/>
-  </div>
+  <nuxt class="pt-8 px-4"/>
 </template>
 
 <style>
