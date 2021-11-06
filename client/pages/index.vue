@@ -39,7 +39,6 @@
 import TextForm from '~/components/translation/TextForm.vue'
 import { Interaction } from '~/lib/translation/model/interaction'
 import { translateGateway } from "~/lib/translation/infrastructure/gateway/axios";
-import { messages } from "../store/translation";
 
 export default {
   name: 'Translation',
