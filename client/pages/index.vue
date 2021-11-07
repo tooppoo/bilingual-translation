@@ -63,7 +63,7 @@ import SourceTextForm from "../components/translation/form/source/SourceTextForm
 import TranslatedTextForm from "../components/translation/form/translated/TranslatedTextForm";
 import OverWriteButton from "../components/translation/form/origin/OverWriteButton";
 import TranslateButton from "../components/translation/form/TranslateButton";
-import { error, idle, loading } from "../components/icon/icon-state";
+import { error, idle, loading } from "../components/icon/notice/notice-state";
 
 export default {
   name: 'Translation',
