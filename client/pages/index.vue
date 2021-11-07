@@ -1,15 +1,12 @@
 <template>
   <div>
     <header class="flex flex-col justify-between h-1/5">
-      <text-form
+      <original-text-form
         name="origin-text"
         class="h-full"
+        :value="data.origin.body"
         @input="onSetOrigin"
-      >
-        <template v-slot:caption>
-          原文
-        </template>
-      </text-form>
+      />
       <div class="my-1" />
       <div>
         <button
@@ -26,16 +23,12 @@
       <section
         class="h-full flex-auto"
       >
-        <text-form
+        <source-text-form
           name="source-text"
           class="h-full"
           :value="data.source.body"
           @input="e => onWriteSource(e.target.value)"
-        >
-          <template v-slot:caption>
-            翻訳前
-          </template>
-        </text-form>
+        />
       </section>
       <section
         class="w-24 text-center flex-initial"
@@ -51,15 +44,11 @@
       <section
         class="h-full flex-auto"
       >
-        <text-form
+        <translated-text-form
           name="target-text"
           class="h-full"
           :value="data.translated"
-        >
-          <template v-slot:caption>
-            翻訳後
-          </template>
-        </text-form>
+        />
       </section>
     </article>
   </div>
@@ -70,10 +59,16 @@ import TextForm from '~/components/translation/form/TextForm.vue'
 import { Interaction } from '~/lib/translation/model/interaction'
 import { translateGateway } from "~/lib/translation/infrastructure/gateway/axios";
 import ToolTip from "../components/translation/form/source/ToolTip";
+import OriginalTextForm from "../components/translation/form/origin/OriginalTextForm";
+import SourceTextForm from "../components/translation/form/source/SourceTextForm";
+import TranslatedTextForm from "../components/translation/form/translated/TranslatedTextForm";
 
 export default {
   name: 'Translation',
   components: {
+    TranslatedTextForm,
+    SourceTextForm,
+    OriginalTextForm,
     ToolTip,
     TextForm,
   },
@@ -82,11 +77,13 @@ export default {
   }),
   methods: {
     onSetOrigin: function (event) {
+      console.debug({ event })
       const newOrigin = event.target.value
 
       this.data = Interaction.changeOrigin(newOrigin, this.data.clone())
     },
     onWriteSource: function (written) {
+      console.debug({ event })
       this.data = Interaction.writeSource(written, this.data.clone())
     },
     onTranslate: async function () {
