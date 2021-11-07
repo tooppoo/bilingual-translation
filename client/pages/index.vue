@@ -36,7 +36,7 @@
         />
       </section>
       <section
-        class="w-24 flex-initial text-center"
+        class="w-24 flex-initial text-center px-2"
       >
         <translate-button @click="onTranslate" />
         <div class="w-full h-8">
