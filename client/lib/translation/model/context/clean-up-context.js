@@ -1,6 +1,7 @@
+import { defineContext } from "../../../shared/context/define-context";
 
-const removeNewLines = {
-  apply(d, f) {
+const removeNewLines = defineContext(
+  (d) => {
     d.removeNewLines = function () {
       const c = Object.create(this)
 
@@ -10,16 +11,14 @@ const removeNewLines = {
 
       return c
     }
-
-    const r = f(d)
-
+  },
+  (d) => {
     delete d.removeNewLines
-
-    return r
   }
-}
-const removeExcessiveBlank = {
-  apply(d, f) {
+)
+
+const removeExcessiveBlank = defineContext(
+  (d) => {
     d.removeExcessiveBlank = function () {
       const c = Object.create(this)
 
@@ -29,14 +28,11 @@ const removeExcessiveBlank = {
 
       return c
     }
-
-    const r = f(d)
-
+  },
+  (d) => {
     delete d.removeExcessiveBlank
-
-    return r
-  }
-}
+  },
+)
 
 export const cleanUpContext = {
   removeNewLines,

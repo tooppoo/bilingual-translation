@@ -1,21 +1,19 @@
+import { defineContext } from "../../../shared/context/define-context";
 
-const bySentence = {
-  apply(data, f) {
-    data.split = function (period) {
+const bySentence = defineContext(
+  (d) => {
+    d.split = function (period) {
       const c = Object.create(this)
 
       c.source.body = this.source.body.replace(new RegExp(`(${period})`, 'g'), "$1\n\n")
 
       return c
     }
-
-    const r = f(data)
-
+  },
+  (d) => {
     delete data.split
-
-    return r
   }
-}
+)
 
 export const splitContext = {
   bySentence,

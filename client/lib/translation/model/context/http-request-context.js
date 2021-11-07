@@ -1,18 +1,16 @@
+import { defineContext } from "../../../shared/context/define-context";
 
-const onTranslationRequest = {
-  apply(data, f) {
-    data.toPostParams = () => ({
-      language: data.language,
-      text: data.source.body.split(/\n{2,}/)
+const onTranslationRequest = defineContext(
+  (d) => {
+    d.toPostParams = () => ({
+      language: d.language,
+      text: d.source.body.split(/\n{2,}/)
     })
-
-    const res = f(data)
-
-    delete data.toPostParams
-
-    return res
+  },
+  (d) => {
+    delete d.toPostParams
   }
-}
+)
 
 export const httpRequestContext = {
   onTranslationRequest
