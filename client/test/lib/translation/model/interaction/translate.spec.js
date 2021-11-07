@@ -21,7 +21,7 @@ describe('Interaction#translate', () => {
       source: {
         body: 'source-text'
       },
-      target: '',
+      translated: '',
       language: {
         from: 'en',
         to: 'ja',
@@ -30,7 +30,7 @@ describe('Interaction#translate', () => {
       source: {
         body: 'source-text'
       },
-      target: 'translated text',
+      translated: 'translated text',
       language: {
         from: 'en',
         to: 'ja',
@@ -49,7 +49,7 @@ test 3
 
 test 4`,
       },
-      target: '',
+      translated: '',
       language: {
         from: 'en',
         to: 'ja',
