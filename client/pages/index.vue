@@ -27,6 +27,7 @@
           :value="data.source.body"
           @remove-new-line="onRemoveNewLine"
           @add-new-line="onSplitBySentence"
+          @remove-excessive-blank="onRemoveExcessiveBlank"
         />
       </section>
       <section
@@ -77,14 +78,16 @@ export default {
       this.data = Interaction.changeOrigin(newOrigin, this.data.clone())
     },
     onWriteSource: function (written) {
-      console.debug({ event })
       this.data = Interaction.writeSource(written, this.data.clone())
     },
     onTranslate: async function () {
       this.data = await this.translator(this.data.clone())
     },
     onRemoveNewLine: function () {
-      this.data = Interaction.cleanUp(this.data.clone())
+      this.data = Interaction.removeNewLines(this.data.clone())
+    },
+    onRemoveExcessiveBlank: function () {
+      this.data = Interaction.removeExcessiveBlank(this.data.clone())
     },
     onSplitBySentence: function () {
       this.data = this.sentenceSplitter(this.data.clone())

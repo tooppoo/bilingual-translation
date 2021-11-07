@@ -22,6 +22,7 @@ export default {
       return [
         { label: '改行削除', event: 'remove-new-line' },
         { label: '改行追加', event: 'add-new-line' },
+        { label: '空白除去', event: 'remove-excessive-blank' },
       ]
     },
   }

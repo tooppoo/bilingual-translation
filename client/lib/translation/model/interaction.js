@@ -32,9 +32,13 @@ const translate = (gateway) => (state) =>
       translated: data.translated.body,
     }))
   )
-const cleanUp = (state) => cleanUpContext.onCleanUp.apply(
+const removeNewLines = (state) => cleanUpContext.removeNewLines.apply(
   state,
-  s => s.cleanUp()
+  s => s.removeNewLines()
+)
+const removeExcessiveBlank = (state) => cleanUpContext.removeExcessiveBlank.apply(
+  state,
+  s => s.removeExcessiveBlank()
 )
 const splitBySentence =
   (period) =>
@@ -45,6 +49,7 @@ export const Interaction = {
   changeOrigin,
   writeSource,
   translate,
-  cleanUp,
+  removeNewLines,
+  removeExcessiveBlank,
   splitBySentence,
 }

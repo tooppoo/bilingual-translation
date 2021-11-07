@@ -1,7 +1,7 @@
 
-const onCleanUp = {
+const removeNewLines = {
   apply(d, f) {
-    d.cleanUp = function () {
+    d.removeNewLines = function () {
       const c = Object.create(this)
 
       c.source.body = this.source.body
@@ -13,12 +13,32 @@ const onCleanUp = {
 
     const r = f(d)
 
-    delete d.cleanUp
+    delete d.removeNewLines
+
+    return r
+  }
+}
+const removeExcessiveBlank = {
+  apply(d, f) {
+    d.removeExcessiveBlank = function () {
+      const c = Object.create(this)
+
+      c.source.body = this.source.body
+        .replace(/[ 　\t\f]*\n[ 　\t\f]*/g, '\n')
+        .replace(/[ 　\t\f]+/g, ' ')
+
+      return c
+    }
+
+    const r = f(d)
+
+    delete d.removeExcessiveBlank
 
     return r
   }
 }
 
 export const cleanUpContext = {
-  onCleanUp,
+  removeNewLines,
+  removeExcessiveBlank,
 }
