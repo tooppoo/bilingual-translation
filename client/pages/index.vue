@@ -24,10 +24,11 @@
           @input="e => onWriteSource(e.target.value)"
         />
       </section>
-      <translate-button
+      <section
         class="w-24 flex-initial"
-        @click="onTranslate"
-      />
+      >
+        <translate-button @click="onTranslate" />
+      </section>
       <section
         class="h-full flex-auto"
       >

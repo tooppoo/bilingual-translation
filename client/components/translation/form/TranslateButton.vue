@@ -1,5 +1,5 @@
 <template>
-  <section
+  <div
     class="text-center"
   >
     <button
@@ -9,7 +9,7 @@
       翻訳
     </button>
     <div class="text-xl">→</div>
-  </section>
+  </div>
 </template>
 
 <script>
