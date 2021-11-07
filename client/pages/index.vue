@@ -31,9 +31,13 @@
         />
       </section>
       <section
-        class="w-24 flex-initial"
+        class="w-24 flex-initial text-center"
       >
         <translate-button @click="onTranslate" />
+        <div class="text-xl">→</div>
+        <div class="w-full h-8">
+          <component :name="actionState.id" :is="actionState.view" />
+        </div>
       </section>
       <section
         class="h-full flex-auto flex flex-col"
@@ -56,6 +60,7 @@ import SourceTextForm from "../components/translation/form/source/SourceTextForm
 import TranslatedTextForm from "../components/translation/form/translated/TranslatedTextForm";
 import OverWriteButton from "../components/translation/form/origin/OverWriteButton";
 import TranslateButton from "../components/translation/form/TranslateButton";
+import { error, idle, loading } from "../components/icon/icon-state";
 
 export default {
   name: 'Translation',
@@ -69,6 +74,7 @@ export default {
   },
   data: () => ({
     data: Interaction.initialize(),
+    actionState: idle,
   }),
   methods: {
     onSetOrigin: function (event) {
@@ -81,7 +87,18 @@ export default {
       this.data = Interaction.writeSource(written, this.data.clone())
     },
     onTranslate: async function () {
-      this.data = await this.translator(this.data.clone())
+      try {
+        this.actionState = loading
+
+        this.data = await this.translator(this.data.clone())
+
+        this.actionState = idle
+      }
+      catch (e) {
+        console.error(e)
+
+        this.actionState = error
+      }
     },
     onRemoveNewLine: function () {
       this.data = Interaction.removeNewLines(this.data.clone())
