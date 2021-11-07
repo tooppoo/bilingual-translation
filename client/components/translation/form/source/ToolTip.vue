@@ -1,8 +1,7 @@
 <template>
   <div
     name="tool-tip"
-    class="flex py-3 px-2 bg-white border-2 shadow-md justify-between"
-    :style="gridStyle"
+    class="flex py-3 px-2 bg-white border-2 shadow-md justify-start"
   >
     <button
       v-for="(b) in buttons"
@@ -18,16 +17,6 @@
 <script>
 export default {
   name: "ToolTip",
-  props: {
-    x: {
-      type: Number,
-      default: 0,
-    },
-    y: {
-      type: Number,
-      default: 0,
-    },
-  },
   computed: {
     buttons: function () {
       return [
@@ -35,13 +24,6 @@ export default {
         { label: '改行追加', event: 'add-new-line' },
       ]
     },
-    gridStyle: function () {
-      return {
-        position: 'absolute',
-        left: this.x,
-        bottom: this.y,
-      }
-    }
   }
 };
 </script>

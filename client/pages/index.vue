@@ -15,13 +15,18 @@
     <div class="my-2" />
     <article class="h-4/5 flex flex-row items-center">
       <section
-        class="h-full flex-auto"
+        class="h-full flex-auto flex flex-col"
       >
         <source-text-form
           name="source-text"
-          class="h-full"
           :value="data.source.body"
           @input="e => onWriteSource(e.target.value)"
+        />
+        <tool-tip
+          class="h-20 flex-initial"
+          :value="data.source.body"
+          @remove-new-line="onRemoveNewLine"
+          @add-new-line="onSplitBySentence"
         />
       </section>
       <section
@@ -30,11 +35,10 @@
         <translate-button @click="onTranslate" />
       </section>
       <section
-        class="h-full flex-auto"
+        class="h-full flex-auto flex flex-col"
       >
         <translated-text-form
           name="target-text"
-          class="h-full"
           :value="data.translated"
         />
       </section>
