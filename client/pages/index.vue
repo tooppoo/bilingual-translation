@@ -100,7 +100,7 @@ export default {
       return Interaction.translate(gateway)
     },
     sentenceSplitter: function () {
-      return Interaction.splitBySentence('\\.')
+      return Interaction.splitBySentence('[.?!]')
     },
   }
 }
