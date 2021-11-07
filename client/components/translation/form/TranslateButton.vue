@@ -9,12 +9,21 @@
       翻訳
     </button>
     <div class="text-xl">→</div>
+    <notice-loading />
+    <notice-error />
   </div>
 </template>
 
 <script>
+import NoticeError from "../../icon/NoticeError";
+import NoticeLoading from "../../icon/NoticeLoading";
+
 export default {
   name: "TranslateButton",
+  components: {
+    NoticeLoading,
+    NoticeError
+  },
   methods: {
     onClick: function (event) {
       this.$emit('click', event)
