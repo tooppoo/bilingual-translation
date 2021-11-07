@@ -17,7 +17,7 @@ export function defineContext(applier, unapplier) {
       unapplier(d)
     },
     and(contexts) {
-      return concatContexts([this, ...contexts])
+      return concatContexts([this, contexts])
     }
   }
 }
