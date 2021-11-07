@@ -11,7 +11,7 @@
       @change="onChange"
       @select="onSelect"
       :value="value"
-      class="border-2 h-full"
+      class="border-2 h-full resize-none"
     ></textarea>
   </section>
 </template>
