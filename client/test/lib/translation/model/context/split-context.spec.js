@@ -10,7 +10,7 @@ describe('splitContext', () => {
       }
       splitContext.bySentence.apply(data, (sut) => {
         expect(sut.split('[.?!]').source).toStrictEqual({
-          body: 'hello.\n\nwho are you?\n\nIm John Doe!\n\nlol.',
+          body: 'hello.\nwho are you?\nIm John Doe!\nlol.\n',
         })
       })
     })
