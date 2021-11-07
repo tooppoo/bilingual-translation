@@ -8,11 +8,13 @@
         @input="onSetOrigin"
       />
       <div class="my-1" />
-      <div>
+      <div class="flex items-start">
         <over-write-button
           @click="() => onWriteSource(data.origin.body)"
         />
-        <span class="text-xl">↓</span>
+        <div class="h-8 w-8 flex items-center justify-center">
+          <down-arrow />
+        </div>
       </div>
     </header>
     <div class="my-2" />
@@ -37,7 +39,9 @@
         class="w-24 flex-initial text-center"
       >
         <translate-button @click="onTranslate" />
-        <div class="text-xl">→</div>
+        <div class="w-full h-8">
+          <right-arrow />
+        </div>
         <div class="w-full h-8">
           <component :name="actionState.id" :is="actionState.view" />
         </div>
@@ -64,10 +68,14 @@ import TranslatedTextForm from "../components/translation/form/translated/Transl
 import OverWriteButton from "../components/translation/form/origin/OverWriteButton";
 import TranslateButton from "../components/translation/form/TranslateButton";
 import { error, idle, loading } from "../components/icon/notice/notice-state";
+import DownArrow from "../components/icon/arrow/RightDown";
+import RightArrow from "../components/icon/arrow/RightArrow";
 
 export default {
   name: 'Translation',
   components: {
+    RightArrow,
+    DownArrow,
     TranslateButton,
     OverWriteButton,
     TranslatedTextForm,

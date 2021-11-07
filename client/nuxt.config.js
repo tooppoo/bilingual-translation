@@ -56,7 +56,12 @@ export default {
       imports: [
         {
           set: '@fortawesome/free-solid-svg-icons',
-          icons: ['faCircleNotch', 'faExclamationCircle']
+          icons: [
+            'faCircleNotch',
+            'faExclamationCircle',
+            'faAngleDoubleDown',
+            'faAngleDoubleRight',
+          ],
         },
       ]
     }],
