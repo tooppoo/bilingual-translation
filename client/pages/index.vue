@@ -8,15 +8,9 @@
         @input="onSetOrigin"
       />
       <div class="my-1" />
-      <div>
-        <button
-          class="text-xl text-center border-2 shadow w-24"
-          @click="() => onWriteSource(data.origin.body)"
-        >
-          上書き
-        </button>
-        <span class="text-xl">↓</span>
-      </div>
+      <over-write-button
+        @click="() => onWriteSource(data.origin.body)"
+      />
     </header>
     <div class="my-2" />
     <article class="h-4/5 flex flex-row items-center">
@@ -30,17 +24,10 @@
           @input="e => onWriteSource(e.target.value)"
         />
       </section>
-      <section
-        class="w-24 text-center flex-initial"
-      >
-        <button
-          class="text-xl text-center border-2 shadow w-full"
-          @click="onTranslate"
-        >
-          翻訳
-        </button>
-        <div class="text-xl">→</div>
-      </section>
+      <translate-button
+        class="w-24 flex-initial"
+        @click="onTranslate"
+      />
       <section
         class="h-full flex-auto"
       >
@@ -62,10 +49,14 @@ import ToolTip from "../components/translation/form/source/ToolTip";
 import OriginalTextForm from "../components/translation/form/origin/OriginalTextForm";
 import SourceTextForm from "../components/translation/form/source/SourceTextForm";
 import TranslatedTextForm from "../components/translation/form/translated/TranslatedTextForm";
+import OverWriteButton from "../components/translation/form/origin/OverWriteButton";
+import TranslateButton from "../components/translation/form/TranslateButton";
 
 export default {
   name: 'Translation',
   components: {
+    TranslateButton,
+    OverWriteButton,
     TranslatedTextForm,
     SourceTextForm,
     OriginalTextForm,
