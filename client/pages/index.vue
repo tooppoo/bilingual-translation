@@ -8,9 +8,12 @@
         @input="onSetOrigin"
       />
       <div class="my-1" />
-      <over-write-button
-        @click="() => onWriteSource(data.origin.body)"
-      />
+      <div>
+        <over-write-button
+          @click="() => onWriteSource(data.origin.body)"
+        />
+        <span class="text-xl">↓</span>
+      </div>
     </header>
     <div class="my-2" />
     <article class="h-4/5 flex flex-row items-center">

@@ -1,13 +1,10 @@
 <template>
-  <div>
-    <button
-      class="text-xl text-center border-2 shadow w-24"
-      @click="onClick"
-    >
-      上書き
-    </button>
-    <span class="text-xl">↓</span>
-  </div>
+  <button
+    class="text-xl text-center border-2 shadow w-24"
+    @click="onClick"
+  >
+    上書き
+  </button>
 </template>
 
 <script>
