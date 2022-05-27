@@ -11,7 +11,7 @@ module Translation
 <details>
   <summary>原文</summary>
 
-> #{source}
+#{(source.split("\n").map { |s| "> #{s}" }).join("\n")}
 </details>
 
 EOS
