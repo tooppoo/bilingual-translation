@@ -50,21 +50,6 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    [
-      'nuxt-fontawesome', {
-      component: 'fa',
-      imports: [
-        {
-          set: '@fortawesome/free-solid-svg-icons',
-          icons: [
-            'faCircleNotch',
-            'faExclamationCircle',
-            'faAngleDoubleDown',
-            'faAngleDoubleRight',
-          ],
-        },
-      ]
-    }],
   ],
   /*
   ** Axios module configuration
@@ -100,7 +85,19 @@ export default {
   },
   buildModules: [
     '@nuxt/postcss8',
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    ['@nuxtjs/fontawesome', {
+      component: 'fa',
+      suffix: true,
+      icons: {
+        solid: [
+          'faCircleNotch',
+          'faExclamationCircle',
+          'faAngleDoubleDown',
+          'faAngleDoubleRight',
+        ],
+      },
+    }],
   ],
   resolve: {
     extensions: ['.js', '.json', '.vue', '.ts'],
