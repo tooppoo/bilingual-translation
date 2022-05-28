@@ -66,17 +66,6 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend(config, ctx) {
-      // Run ESLint on save
-      if (ctx.isDev && ctx.isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
-      }
-    },
     postcss: {
       plugins: {
         autoprefixer: require('autoprefixer')
@@ -86,6 +75,7 @@ export default {
   buildModules: [
     '@nuxt/postcss8',
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/eslint-module',
     ['@nuxtjs/fontawesome', {
       component: 'fa',
       suffix: true,
