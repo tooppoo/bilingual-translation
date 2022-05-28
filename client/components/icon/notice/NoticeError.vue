@@ -3,16 +3,14 @@
 </template>
 
 <script>
-import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons/faExclamationCircle";
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons/faExclamationCircle'
 
 export default {
-  name: "NoticeError",
+  name: 'NoticeError',
   computed: {
     faExclamationCircle: () => faExclamationCircle,
   },
-};
+}
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

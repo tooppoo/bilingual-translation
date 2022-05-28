@@ -1,10 +1,10 @@
-import { defineContext } from "../../../shared/context/define-context";
+import { defineContext } from '../../../shared/context/define-context'
 
 const onTranslationRequest = defineContext(
   (d) => {
     d.toPostParams = () => ({
       language: d.language,
-      text: d.source.body.split(/\n{2,}/)
+      text: d.source.body.split(/\n{2,}/),
     })
   },
   (d) => {
@@ -13,5 +13,5 @@ const onTranslationRequest = defineContext(
 )
 
 export const httpRequestContext = {
-  onTranslationRequest
+  onTranslationRequest,
 }

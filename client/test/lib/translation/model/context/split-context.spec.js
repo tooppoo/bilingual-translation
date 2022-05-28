@@ -1,4 +1,4 @@
-import { splitContext } from "../../../../../lib/translation/model/context/split-context";
+import { splitContext } from '../../../../../lib/translation/model/context/split-context'
 
 describe('splitContext', () => {
   describe('bySentence', () => {

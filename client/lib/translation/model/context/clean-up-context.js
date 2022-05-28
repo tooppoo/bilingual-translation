@@ -1,4 +1,4 @@
-import { defineContext } from "../../../shared/context/define-context";
+import { defineContext } from '../../../shared/context/define-context'
 
 const removeNewLines = defineContext(
   (d) => {
@@ -7,7 +7,7 @@ const removeNewLines = defineContext(
 
       c.source.body = this.source.body
         .replace(/- ?\n/g, '')
-        .replace(/([^.])\n/g, "$1")
+        .replace(/([^.])\n/g, '$1')
 
       return c
     }
@@ -23,15 +23,15 @@ const removeExcessiveBlank = defineContext(
       const c = Object.create(this)
 
       c.source.body = this.source.body
-        .replace(/[ 　\t\f]*\n[ 　\t\f]*/g, '\n')
-        .replace(/[ 　\t\f]+/g, ' ')
+        .replace(/[ \u3000\t\f]*\n[ \u3000\t\f]*/g, '\n')
+        .replace(/[ \u3000\t\f]+/g, ' ')
 
       return c
     }
   },
   (d) => {
     delete d.removeExcessiveBlank
-  },
+  }
 )
 
 export const cleanUpContext = {

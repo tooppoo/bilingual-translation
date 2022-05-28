@@ -1,4 +1,4 @@
-import { defineContext } from "../../../../lib/shared/context/define-context";
+import { defineContext } from '../../../../lib/shared/context/define-context'
 
 describe(defineContext.name, () => {
   const context1 = defineContext(

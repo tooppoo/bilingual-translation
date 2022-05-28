@@ -1,93 +1,91 @@
-import pkg from './package'
 import path from 'path'
+import pkg from './package'
 
 export default {
   ssr: false,
   target: 'static',
 
-  rootDir: "../",
-  srcDir: "client/",
+  rootDir: '../',
+  srcDir: 'client/',
   generate: {
-    dir: "public"
+    dir: 'public',
   },
 
   /*
-  ** Headers of the page
-  */
+   ** Headers of the page
+   */
   head: {
     title: pkg.name,
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', content: pkg.description },
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
   /*
-  ** Customize the progress-bar color
-  */
+   ** Customize the progress-bar color
+   */
   loading: { color: '#fff' },
 
   /*
-  ** Global CSS
-  */
-  css: [
-    '~/assets/css/tailwind.css'
-  ],
+   ** Global CSS
+   */
+  css: ['~/assets/css/tailwind.css'],
 
   /*
-  ** Plugins to load before mounting the App
-  */
-  plugins: [
-  ],
+   ** Plugins to load before mounting the App
+   */
+  plugins: [],
 
   /*
-  ** Nuxt.js modules
-  */
+   ** Nuxt.js modules
+   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
   ],
   /*
-  ** Axios module configuration
-  */
+   ** Axios module configuration
+   */
   axios: {
     host: '127.0.0.1',
     port: 3000,
   },
 
   /*
-  ** Build configuration
-  */
+   ** Build configuration
+   */
   build: {
     /*
-    ** You can extend webpack config here
-    */
+     ** You can extend webpack config here
+     */
     postcss: {
       plugins: {
-        autoprefixer: require('autoprefixer')
-      }
-    }
+        autoprefixer: require('autoprefixer'),
+      },
+    },
   },
   buildModules: [
     '@nuxt/postcss8',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/eslint-module',
-    ['@nuxtjs/fontawesome', {
-      component: 'fa',
-      suffix: true,
-      icons: {
-        solid: [
-          'faCircleNotch',
-          'faExclamationCircle',
-          'faAngleDoubleDown',
-          'faAngleDoubleRight',
-        ],
+    [
+      '@nuxtjs/fontawesome',
+      {
+        component: 'fa',
+        suffix: true,
+        icons: {
+          solid: [
+            'faCircleNotch',
+            'faExclamationCircle',
+            'faAngleDoubleDown',
+            'faAngleDoubleRight',
+          ],
+        },
       },
-    }],
+    ],
   ],
   resolve: {
     extensions: ['.js', '.json', '.vue', '.ts'],
@@ -96,5 +94,5 @@ export default {
       '@': path.resolve(__dirname),
       '~': path.resolve(__dirname),
     },
-  }
+  },
 }

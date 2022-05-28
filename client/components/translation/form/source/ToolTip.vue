@@ -4,10 +4,10 @@
     class="flex py-3 px-2 bg-white border-2 shadow-md justify-start"
   >
     <button
-      v-for="(b) in buttons"
+      v-for="b in buttons"
       :key="b.event"
-      @click="() => $emit(b.event)"
       class="border-2 mx-2 shadow p-2 text-lg"
+      @click="() => $emit(b.event)"
     >
       {{ b.label }}
     </button>
@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: "ToolTip",
+  name: 'ToolTip',
   computed: {
     buttons: function () {
       return [
@@ -25,10 +25,8 @@ export default {
         { label: '空白除去', event: 'remove-excessive-blank' },
       ]
     },
-  }
-};
+  },
+}
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

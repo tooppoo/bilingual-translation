@@ -1,4 +1,3 @@
-
 export function defineContext(applier, unapplier) {
   return {
     apply(d, f) {
@@ -18,17 +17,17 @@ export function defineContext(applier, unapplier) {
     },
     and(contexts) {
       return concatContexts([this, contexts])
-    }
+    },
   }
 }
 
 export function concatContexts(contexts) {
   return defineContext(
     (d) => {
-      contexts.forEach(ctx => ctx.apply(d))
+      contexts.forEach((ctx) => ctx.apply(d))
     },
     (d) => {
-      contexts.forEach(ctx => ctx.unapply(d))
+      contexts.forEach((ctx) => ctx.unapply(d))
     }
   )
 }

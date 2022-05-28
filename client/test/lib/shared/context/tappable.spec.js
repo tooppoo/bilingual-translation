@@ -1,4 +1,4 @@
-import { TappableContext } from "~/lib/shared/context/tappable";
+import { TappableContext } from '~/lib/shared/context/tappable'
 
 describe('tappable', () => {
   it('allow to use #tap via object only in clojure', () => {

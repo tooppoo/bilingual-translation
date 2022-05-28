@@ -1,4 +1,3 @@
-
 const empty = () => ({
   origin: {
     body: '',
@@ -6,7 +5,7 @@ const empty = () => ({
   source: {
     body: '',
     isEmpty: function () {
-      return [null, '', (void 0)].some(v => this.body === v)
+      return [null, '', undefined].includes(this.body)
     },
   },
   translated: '',
@@ -22,9 +21,9 @@ const empty = () => ({
       language: { ...this.language },
       clone: this.clone,
     }
-  }
+  },
 })
 
 export const data = {
-  empty
+  empty,
 }

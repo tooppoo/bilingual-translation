@@ -1,19 +1,14 @@
 <template>
-  <text-form
-    @input="onInput"
-    :value="value"
-  >
-    <template v-slot:caption>
-      原文
-    </template>
+  <text-form :value="value" @input="onInput">
+    <template #caption> 原文 </template>
   </text-form>
 </template>
 
 <script>
-import TextForm from "../TextForm";
+import TextForm from '../TextForm'
 
 export default {
-  name: "OriginalTextForm",
+  name: 'OriginalTextForm',
   components: {
     TextForm,
   },
@@ -28,9 +23,7 @@ export default {
       this.$emit('input', event)
     },
   },
-};
+}
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

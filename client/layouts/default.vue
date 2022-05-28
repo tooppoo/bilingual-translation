@@ -1,6 +1,12 @@
 <template>
-  <nuxt class="h-screen py-8 px-4"/>
+  <nuxt class="h-screen py-8 px-4" />
 </template>
+
+<script>
+export default {
+  name: 'DefaultLayout',
+}
+</script>
 
 <style>
 html {
@@ -21,11 +27,4 @@ html {
   box-sizing: border-box;
   margin: 0;
 }
-
 </style>
-
-<script>
-export default {
-  name: 'DefaultLayout',
-}
-</script>

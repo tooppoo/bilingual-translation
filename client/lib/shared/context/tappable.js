@@ -1,4 +1,3 @@
-
 export const TappableContext = {
   apply(obj, f) {
     obj.tap = (f2) => {
@@ -12,5 +11,5 @@ export const TappableContext = {
     delete obj.tap
 
     return r
-  }
+  },
 }

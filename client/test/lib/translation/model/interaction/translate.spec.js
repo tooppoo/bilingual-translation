@@ -1,4 +1,4 @@
-import { Interaction } from "~/lib/translation/model/interaction";
+import { Interaction } from '~/lib/translation/model/interaction'
 
 describe('Interaction#translate', () => {
   let mockGateway
@@ -17,18 +17,20 @@ describe('Interaction#translate', () => {
   })
 
   it('should create data with translated text', async () => {
-    await expect(sut({
+    await expect(
+      sut({
+        source: {
+          body: 'source-text',
+        },
+        translated: '',
+        language: {
+          from: 'en',
+          to: 'ja',
+        },
+      })
+    ).resolves.toStrictEqual({
       source: {
-        body: 'source-text'
-      },
-      translated: '',
-      language: {
-        from: 'en',
-        to: 'ja',
-      },
-    })).resolves.toStrictEqual({
-      source: {
-        body: 'source-text'
+        body: 'source-text',
       },
       translated: 'translated text',
       language: {
@@ -61,11 +63,7 @@ test 4`,
         from: 'en',
         to: 'ja',
       },
-      text: [
-        `\ntest 1\ntest 2`,
-        `test 3`,
-        `test 4`
-      ]
+      text: [`\ntest 1\ntest 2`, `test 3`, `test 4`],
     }).toStrictEqual(mockGateway.translate.mock.calls[0][0])
   })
 })

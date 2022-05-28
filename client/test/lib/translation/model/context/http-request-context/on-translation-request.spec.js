@@ -1,4 +1,4 @@
-import { httpRequestContext } from "~/lib/translation/model/context/http-request-context"
+import { httpRequestContext } from '~/lib/translation/model/context/http-request-context'
 
 describe('onTranslationRequest', () => {
   const sut = httpRequestContext.onTranslationRequest
@@ -15,20 +15,15 @@ text 1
 text 2
 
 text 3`,
-      }
+      },
     }
 
-    expect(
-      sut.apply(data, d => d.toPostParams())
-    ).toStrictEqual({
+    expect(sut.apply(data, (d) => d.toPostParams())).toStrictEqual({
       language: {
         from: 'en',
-        to: 'ja'
+        to: 'ja',
       },
-      text: [
-        `\ntext 1\ntext 2`,
-        `text 3`
-      ]
+      text: [`\ntext 1\ntext 2`, `text 3`],
     })
   })
 
@@ -44,10 +39,10 @@ text 1
 text 2
 
 text 3`,
-      }
+      },
     }
 
-    sut.apply(data, d => d.toPostParams())
+    sut.apply(data, (d) => d.toPostParams())
 
     expect(data.toPostParams).toBeUndefined()
   })

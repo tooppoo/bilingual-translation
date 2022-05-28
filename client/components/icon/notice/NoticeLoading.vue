@@ -3,16 +3,14 @@
 </template>
 
 <script>
-import { faCircleNotch } from "@fortawesome/free-solid-svg-icons/faCircleNotch";
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons/faCircleNotch'
 
 export default {
-  name: "NoticeLoading",
+  name: 'NoticeLoading',
   computed: {
     faCircleNotch: () => faCircleNotch,
   },
-};
+}
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

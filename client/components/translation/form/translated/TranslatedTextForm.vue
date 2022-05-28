@@ -1,18 +1,14 @@
 <template>
-  <text-form
-    :value="value"
-  >
-    <template v-slot:caption>
-      翻訳後
-    </template>
+  <text-form :value="value">
+    <template #caption> 翻訳後 </template>
   </text-form>
 </template>
 
 <script>
-import TextForm from "../TextForm";
+import TextForm from '../TextForm'
 
 export default {
-  name: "TranslatedTextForm",
+  name: 'TranslatedTextForm',
   components: {
     TextForm,
   },
@@ -22,9 +18,7 @@ export default {
       default: '',
     },
   },
-};
+}
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

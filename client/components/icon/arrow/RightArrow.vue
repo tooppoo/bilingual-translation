@@ -3,16 +3,14 @@
 </template>
 
 <script>
-import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons/faAngleDoubleRight";
+import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons/faAngleDoubleRight'
 
 export default {
-  name: "RightArrow",
+  name: 'RightArrow',
   computed: {
     faAngleDoubleRight: () => faAngleDoubleRight,
   },
-};
+}
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

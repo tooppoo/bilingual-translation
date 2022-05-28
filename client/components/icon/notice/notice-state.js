@@ -1,6 +1,6 @@
-import NoticeLoading from "./NoticeLoading";
-import NoticeError from "./NoticeError";
-import DummyIcon from "../DummyIcon";
+import DummyIcon from '../DummyIcon'
+import NoticeLoading from './NoticeLoading'
+import NoticeError from './NoticeError'
 
 export const loading = {
   id: 'loading',
