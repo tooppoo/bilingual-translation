@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'rexml', '~> 3.2.5'
-gem 'dotenv-rails', '~> 2.7.6'
+gem 'dotenv-rails', '~> 2.8.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
