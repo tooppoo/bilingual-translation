@@ -1,3 +1,5 @@
+vendor/bundle
+
 dist/
 node_modules/
 .nuxt/
