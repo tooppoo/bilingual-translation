@@ -4,25 +4,17 @@
 .PHONY: init_server
 init: init_server init_client
 init_server:
-	bundle install
+	docker compose build web
+	docker compose run --rm --no-deps web bundle install
 init_client:
-	yarn --cwd client install
-
-.PHONY: local
-local:
-	./bin/spring rails server
-
-.PHONY: build
-build:
-	yarn --cwd client generate \
-		--target static \
-		--devtools
+	docker compose build client
+	docker compose run --rm client yarn install --frozen-lockfile
 
 .PHONY: test
 .PHONY: test_server
 .PHONY: test_client
 test: test_server test_client
 test_server:
-	bundle exec rspec
+	docker compose run --rm --no-deps web bundle exec rspec
 test_client:
-	yarn --cwd client test
+	docker compose run --rm client yarn test

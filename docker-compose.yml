@@ -1,0 +1,38 @@
+version: "3"
+services:
+  web:
+    container_name: bilingual-trans-web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - vendor:/web/vendor
+      - client_dist:/web/public
+    depends_on:
+      - client
+    environment:
+      RAILS_ENV: development
+      RACK_ENV: development
+      PORT: 3001
+    ports:
+      - "3001:3001"
+  client:
+    container_name: bilingual-trans-client
+    build:
+      context: client
+      dockerfile: Dockerfile
+    volumes:
+      - node_modules:/client/node_modules
+      - client_dist:/client/dist
+volumes:
+  vendor:
+    driver_opts:
+      type: none
+      device: ${PWD}/vendor
+      o: bind
+  node_modules:
+    driver_opts:
+      type: none
+      device: ${PWD}/client/node_modules
+      o: bind
+  client_dist:

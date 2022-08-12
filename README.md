@@ -12,7 +12,7 @@ make
 
 ## start
 ```shell
-make local
+docker compose up
 ```
 
 ## test
