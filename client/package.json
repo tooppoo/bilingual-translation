@@ -6,7 +6,8 @@
   "author": "tooppoo",
   "private": true,
   "engines": {
-    "yarn": "^1.0"
+    "yarn": "^1.0",
+    "node": "^16.13.0"
   },
   "scripts": {
     "dev": "nuxt",

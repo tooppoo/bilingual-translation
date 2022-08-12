@@ -5,12 +5,6 @@ export default {
   ssr: false,
   target: 'static',
 
-  rootDir: '../',
-  srcDir: 'client/',
-  generate: {
-    dir: 'public',
-  },
-
   /*
    ** Headers of the page
    */
