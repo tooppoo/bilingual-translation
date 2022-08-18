@@ -3,7 +3,7 @@ services:
   web:
     container_name: bilingual-trans-web
     build:
-      context: .
+      context: web
       dockerfile: Dockerfile
     volumes:
       - vendor:/web/vendor
@@ -28,7 +28,7 @@ volumes:
   vendor:
     driver_opts:
       type: none
-      device: ${PWD}/vendor
+      device: ${PWD}/web/vendor
       o: bind
   node_modules:
     driver_opts:
