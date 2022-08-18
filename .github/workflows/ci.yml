@@ -41,7 +41,7 @@ jobs:
         pull: true
         up: false
     - name: Run Tests for Server
-      run: scripts/test.sh
+      run: web/scripts/test.sh
 
   test-client:
     runs-on: ubuntu-latest
@@ -57,4 +57,4 @@ jobs:
           pull: true
           up: false
       - name: Run Tests for Client
-        run: scripts/test.sh
+        run: client/scripts/test.sh
