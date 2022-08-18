@@ -21,7 +21,7 @@ jobs:
     - name: Spin-Up Docker Compose
       uses: yu-ichiro/spin-up-docker-compose-action@v1.1
       with:
-        file: docker-compose.yml
+        file: docker-compose.ci.yml
         shared: true
         bake: true
         push: true
@@ -36,12 +36,12 @@ jobs:
     - name: Setup Docker Compose
       uses: yu-ichiro/spin-up-docker-compose-action@v1
       with:
-        file: docker-compose.yml
+        file: docker-compose.ci.yml
         shared: true
         pull: true
         up: false
     - name: Run Tests for Server
-      run: docker compose run web bundle exec spec
+      run: scripts/test.sh
 
   test-client:
     runs-on: ubuntu-latest
@@ -52,9 +52,9 @@ jobs:
       - name: Setup Docker Compose
         uses: yu-ichiro/spin-up-docker-compose-action@v1
         with:
-          file: docker-compose.yml
+          file: docker-compose.ci.yml
           shared: true
           pull: true
           up: false
       - name: Run Tests for Client
-        run: docker compose run client yarn test
+        run: scripts/test.sh
