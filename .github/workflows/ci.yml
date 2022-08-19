@@ -32,18 +32,18 @@ jobs:
     needs:
       - setup_image
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup Docker Compose
-      uses: yu-ichiro/spin-up-docker-compose-action@v1
-      with:
-        file: docker-compose.ci.yml
-        shared: true
-        pull: true
-        up: false
-    - name: Run Tests for Server
-      run: web/scripts/test.sh
-      env:
-        COMPOSE_FILE: docker-compose.ci.yml
+      - uses: actions/checkout@v3
+      - name: Setup Docker Compose
+        uses: yu-ichiro/spin-up-docker-compose-action@v1
+        with:
+          file: docker-compose.ci.yml
+          shared: true
+          pull: true
+          up: false
+      - name: Run Tests for Server
+        run: web/scripts/test.sh
+        env:
+          COMPOSE_FILE: docker-compose.ci.yml
 
   test-client:
     runs-on: ubuntu-latest
