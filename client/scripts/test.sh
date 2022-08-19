@@ -1,3 +1,6 @@
 #!/usr/bin/env sh
 
-docker compose run --rm client yarn test
+docker compose run \
+  --rm \
+  -e NODE_ENV=test \
+  client yarn test

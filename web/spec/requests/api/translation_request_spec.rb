@@ -20,8 +20,6 @@ module Translation::Driver::DriverFactory
 end
 
 RSpec.describe "Api::Translations", type: :request do
-  Rails.configuration.x.translation.driver = { default: :test }
-
   describe "POST /translate" do
     context "request parameter valid" do
       let(:params) do
@@ -33,6 +31,7 @@ RSpec.describe "Api::Translations", type: :request do
           },
         }
       end
+
       it "returns http success" do
         post "/api/translation", xhr: true, params: params
 
@@ -45,6 +44,8 @@ RSpec.describe "Api::Translations", type: :request do
       end
       it "return translated texts as json" do
         post "/api/translation", xhr: true, params: params
+
+        puts response.body
 
         expect(JSON.parse(response.body)).to eq({
             "translated" => {

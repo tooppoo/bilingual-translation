@@ -5,13 +5,8 @@ services:
     build:
       context: web
       dockerfile: Dockerfile
-    environment:
-      RAILS_ENV: test
-      RACK_ENV: test
   client:
     container_name: bilingual-trans-client
     build:
       context: client
       dockerfile: Dockerfile
-    environment:
-      NODE_ENV: test
