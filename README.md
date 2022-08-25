@@ -7,7 +7,7 @@ A browser-based application for outputting translations in paragraph-by-paragrap
 # Usage
 ## initialize
 ```shell
-make
+./scripts/init.sh
 ```
 
 ## start
@@ -17,7 +17,7 @@ docker compose up
 
 ## test
 ```shell
-make test
+./scripts/test.sh
 ```
 
 # License
