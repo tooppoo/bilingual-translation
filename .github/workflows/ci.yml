@@ -19,7 +19,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Spin-Up Docker Compose
-      uses: yu-ichiro/spin-up-docker-compose-action@v1.1
+      uses: yu-ichiro/spin-up-docker-compose-action@v1.2
       with:
         file: docker-compose.ci.yml
         shared: true
