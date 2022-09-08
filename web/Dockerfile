@@ -1,4 +1,4 @@
-FROM ruby:3.0.1 as server-builder
+FROM ruby:3.1.2 as server-builder
 
 WORKDIR /web
 
