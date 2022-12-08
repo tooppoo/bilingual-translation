@@ -57,6 +57,11 @@ export default {
      */
     postcss: {
       plugins: {
+        /**
+         * fontawesome-svg-coreからsyntax errorが上がってくる問題の回避策
+         * https://virment.com/how-to-fix-nuxt-generate-font-awsome-css-error/
+         */
+        'postcss-custom-properties': false,
         autoprefixer: require('autoprefixer'),
       },
     },
