@@ -45,7 +45,7 @@ export default {
    */
   axios: {
     host: '127.0.0.1',
-    port: 3001,
+    port: process.env.PORT || 3001,
   },
 
   /*
@@ -62,6 +62,15 @@ export default {
          * https://virment.com/how-to-fix-nuxt-generate-font-awsome-css-error/
          */
         'postcss-custom-properties': false,
+        /**
+         * 'postcss-custom-properties' と同じ理由で設定
+         * https://stackoverflow.com/questions/67827277/unable-to-build-nuxt-due-to-a-problem-with-postcss-when-using-bulma-and-buefy-n/67827344#67827344
+         */
+        // 'postcss-preset-env': {
+        //   features: {
+        //     'custom-properties': false,
+        //   },
+        // },
         autoprefixer: require('autoprefixer'),
       },
     },

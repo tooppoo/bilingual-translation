@@ -6,6 +6,7 @@ services:
       context: web
       dockerfile: Dockerfile
     volumes:
+      - ./web:/web
       - vendor:/web/vendor
       - client_dist:/web/public
     depends_on:
@@ -22,8 +23,15 @@ services:
       context: client
       dockerfile: Dockerfile
     volumes:
+      - ./client:/client
       - node_modules:/client/node_modules
       - client_dist:/client/dist
+    environment:
+      # Node v18でエラーが発生する問題への対処.
+      # webpack v6で不要になる想定
+      # https://zenn.dev/yogarasu/articles/425732ff408d06
+      NODE_OPTIONS: "--openssl-legacy-provider=value"
+      PORT: 3001
 volumes:
   vendor:
     driver_opts:
